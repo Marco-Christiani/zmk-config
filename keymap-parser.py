@@ -1,7 +1,7 @@
 from typing import List
 from pprint import pprint
 from prettytable import PrettyTable, ALL
-
+from bs4 import BeautifulSoup
 
 symbol_list = ["lto", "mto", "kp", "lt", "mt", "bt"] # NB order matters! Longest first.
 def remove_symbols(arr: List[str]):
@@ -66,22 +66,41 @@ def pad_rows(layer):
 	return result
 
 # ASCII art part
+# Pad the rows so we have a neat grid
+for name in processed_keymap.keys():
+	processed_keymap[name] = pad_rows(processed_keymap[name])
+
+# Print the table to console
 for name, layer in processed_keymap.items():
 	table = PrettyTable(hrules=ALL, header=False)
-	padded_layer = pad_rows(layer)
-	table.add_rows(padded_layer)
+	table.add_rows(layer)
 	print(name)
 	print(table)
 	print()
 
-html_str = []
-for name, layer in processed_keymap.items():
+# Built a single html file from each table's html str
+# First build a table for layer 0
+table = PrettyTable(hrules=ALL, header=False)
+layer_name = layer_names[0]
+table.add_rows(processed_keymap[layer_name])
+html_str = table.get_html_string(format=True)
+soup = BeautifulSoup(html_str, 'html.parser')
+h = soup.new_tag("h4")
+h.string = layer_name
+soup.table.insert_before(h)
+
+
+for layer_name in layer_names[1:]:
 	table = PrettyTable(hrules=ALL, header=False)
-	padded_layer = pad_rows(layer)
-	table.add_rows(padded_layer)
-	print(name)
-	with open(f"{name}.html", "w") as f:
-		f.write(table.get_html_string(format=True))
+	table.add_rows(processed_keymap[layer_name])
+	html_str = table.get_html_string(format=True)
+	curr_soup = BeautifulSoup(html_str, 'html.parser')
+	h = curr_soup.new_tag("h4")
+	h.string = layer_name
+	curr_soup.table.append(h)
+	print(len(soup.find_all("table")))
+	soup.find_all("table")[-1].insert_after(curr_soup.table)	
 
-
+with open("output.html", "w", encoding = 'utf-8') as file:    
+    file.write(str(soup.prettify()))
 	
