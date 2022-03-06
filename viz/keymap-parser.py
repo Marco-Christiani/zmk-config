@@ -69,7 +69,10 @@ def pad_rows(layer):
 # Pad the rows so we have a neat grid
 for name in processed_keymap.keys():
 	processed_keymap[name] = pad_rows(processed_keymap[name])
-
+	
+#                                                  /-----------------\                                                  
+# -------------------------------------------------| Pretty Printing |--------------------------------------------------
+#                                                  \-----------------/                                                  
 # Print the table to console
 for name, layer in processed_keymap.items():
 	table = PrettyTable(hrules=ALL, header=False)
@@ -78,6 +81,9 @@ for name, layer in processed_keymap.items():
 	print(table)
 	print()
 
+#                                                    /-------------\                                                    
+# ---------------------------------------------------| HTML Export |----------------------------------------------------
+#                                                    \-------------/                                                    
 # Built a single html file from each table's html str
 # First build a table for layer 0
 table = PrettyTable(hrules=ALL, header=False)
@@ -98,9 +104,13 @@ for layer_name in layer_names[1:]:
 	h = curr_soup.new_tag("h4")
 	h.string = layer_name
 	curr_soup.table.append(h)
-	print(len(soup.find_all("table")))
 	soup.find_all("table")[-1].insert_after(curr_soup.table)	
 
-with open("output.html", "w", encoding = 'utf-8') as file:    
+with open("keymap-viz.js", "r") as f:
+	script = soup.new_tag("script")
+	script.string = f.read()
+	soup.append(script)
+
+with open("output/output.html", "w", encoding = 'utf-8') as file:    
     file.write(str(soup.prettify()))
 	
