@@ -17,7 +17,7 @@ function highlight(wordArr, color) {
 }
 window.onload = function() {
     let layer_color = "red";
-    let layers = ["SWAP","NAV","NUMPAD", "SYMBOLS", "MEDIA", "RGB ", "BLUETOOTH"];
+    let layers = ["SWAP","NAV","NUMPAD", "SYMBOLS", "MEDIA", "RGB", "BLUETOOTH"];
     highlight(layers, layer_color);
 
     let modifier_color = "blue";

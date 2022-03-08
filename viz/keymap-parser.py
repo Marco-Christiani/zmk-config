@@ -3,7 +3,7 @@ from pprint import pprint
 from prettytable import PrettyTable, ALL
 from bs4 import BeautifulSoup
 
-symbol_list = ["lto", "mto", "kp", "lt", "mt", "bt"] # NB order matters! Longest first.
+symbol_list = ["lto", "mto", "mtp", "kp", "lt", "mt", "bt"] # NB order matters! Longest first.
 def remove_symbols(arr: List[str]):
 	result = []
 	for s in arr:
@@ -81,6 +81,23 @@ for name, layer in processed_keymap.items():
 	print(table)
 	print()
 
+# Alternatively as a single big table
+# table = PrettyTable(hrules=ALL, header=False)
+# for name, layer in processed_keymap.items():
+# 	table.add_row([name]+[""]*15)
+# 	table.add_rows(layer)
+# print(table)
+
+# html_str = table.get_html_string(format=True)
+# soup = BeautifulSoup(html_str, 'html.parser')
+# with open("keymap-viz.js", "r") as f:
+# 	script = soup.new_tag("script")
+# 	script.string = f.read()
+# 	soup.append(script)
+
+# with open("output/output.html", "w", encoding = 'utf-8') as file:    
+#     file.write(str(soup.prettify()))
+
 #                                                    /-------------\                                                    
 # ---------------------------------------------------| HTML Export |----------------------------------------------------
 #                                                    \-------------/                                                    
@@ -101,10 +118,18 @@ for layer_name in layer_names[1:]:
 	table.add_rows(processed_keymap[layer_name])
 	html_str = table.get_html_string(format=True)
 	curr_soup = BeautifulSoup(html_str, 'html.parser')
+	tr = curr_soup.new_tag("tr")
+	td = curr_soup.new_tag("td")
+	td.attrs["colspan"] = 16
 	h = curr_soup.new_tag("h4")
 	h.string = layer_name
-	curr_soup.table.append(h)
-	soup.find_all("table")[-1].insert_after(curr_soup.table)	
+	td.append(h)
+	tr.append(td)
+	curr_soup.table.tr.insert_before(tr) # insert as first row in table
+	for tr in curr_soup.find_all("tr"):
+		soup.find_all("tr")[-1].insert_after(tr)
+	
+	
 
 with open("keymap-viz.js", "r") as f:
 	script = soup.new_tag("script")
@@ -113,4 +138,5 @@ with open("keymap-viz.js", "r") as f:
 
 with open("output/output.html", "w", encoding = 'utf-8') as file:    
     file.write(str(soup.prettify()))
+
 	

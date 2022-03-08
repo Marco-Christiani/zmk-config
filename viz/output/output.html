@@ -106,9 +106,9 @@
     SEMI
    </td>
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
-    p
+    RCTRL
     <br/>
-    RCTRL SQT
+    SQT
    </td>
   </tr>
   <tr>
@@ -231,10 +231,13 @@
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
    </td>
   </tr>
- </tbody>
-</table>
-<table frame="box" rules="all">
- <tbody>
+  <tr>
+   <td colspan="16">
+    <h4>
+     SWAP
+    </h4>
+   </td>
+  </tr>
   <tr>
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
     BSPC
@@ -289,9 +292,9 @@
   </tr>
   <tr>
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
-    p
+    RCTRL
     <br/>
-    RCTRL SQT
+    SQT
    </td>
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
     RALT
@@ -455,13 +458,13 @@
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
    </td>
   </tr>
- </tbody>
- <h4>
-  SWAP
- </h4>
-</table>
-<table frame="box" rules="all">
- <tbody>
+  <tr>
+   <td colspan="16">
+    <h4>
+     NUMPAD
+    </h4>
+   </td>
+  </tr>
   <tr>
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
     trans
@@ -648,13 +651,13 @@
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
    </td>
   </tr>
- </tbody>
- <h4>
-  NUMPAD
- </h4>
-</table>
-<table frame="box" rules="all">
- <tbody>
+  <tr>
+   <td colspan="16">
+    <h4>
+     SYMBOLS
+    </h4>
+   </td>
+  </tr>
   <tr>
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
     GRAVE
@@ -841,13 +844,13 @@
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
    </td>
   </tr>
- </tbody>
- <h4>
-  SYMBOLS
- </h4>
-</table>
-<table frame="box" rules="all">
- <tbody>
+  <tr>
+   <td colspan="16">
+    <h4>
+     NAV
+    </h4>
+   </td>
+  </tr>
   <tr>
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
     trans
@@ -1034,13 +1037,13 @@
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
    </td>
   </tr>
- </tbody>
- <h4>
-  NAV
- </h4>
-</table>
-<table frame="box" rules="all">
- <tbody>
+  <tr>
+   <td colspan="16">
+    <h4>
+     MEDIA
+    </h4>
+   </td>
+  </tr>
   <tr>
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
     trans
@@ -1227,13 +1230,13 @@
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
    </td>
   </tr>
- </tbody>
- <h4>
-  MEDIA
- </h4>
-</table>
-<table frame="box" rules="all">
- <tbody>
+  <tr>
+   <td colspan="16">
+    <h4>
+     RGB
+    </h4>
+   </td>
+  </tr>
   <tr>
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
     trans
@@ -1444,13 +1447,13 @@
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
    </td>
   </tr>
- </tbody>
- <h4>
-  RGB
- </h4>
-</table>
-<table frame="box" rules="all">
- <tbody>
+  <tr>
+   <td colspan="16">
+    <h4>
+     BLUETOOTH
+    </h4>
+   </td>
+  </tr>
   <tr>
    <td style="padding-left: 1em; padding-right: 1em; text-align: center; vertical-align: top">
     BT_NXT
@@ -1644,9 +1647,6 @@
    </td>
   </tr>
  </tbody>
- <h4>
-  BLUETOOTH
- </h4>
 </table>
 <script>
  function escapeRegExp(string) {
@@ -1668,7 +1668,7 @@ function highlight(wordArr, color) {
 }
 window.onload = function() {
     let layer_color = "red";
-    let layers = ["SWAP","NAV","NUMPAD", "SYMBOLS", "MEDIA", "RGB ", "BLUETOOTH"];
+    let layers = ["SWAP","NAV","NUMPAD", "SYMBOLS", "MEDIA", "RGB", "BLUETOOTH"];
     highlight(layers, layer_color);
 
     let modifier_color = "blue";
