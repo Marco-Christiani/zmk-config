@@ -55,9 +55,7 @@ def keymap_to_dict():
 	print()
 	return processed_keymap
 
-
-def keymap_dict_to_console(processed_keymap):
-	def pad_rows(layer):
+def pad_rows(layer):
 		# Turn into a 4x16 grid so we can pretty print it
 		# top two layers need 2 extra keys on the inside
 		# bottom thumb tow needs three extra keys on the outside
@@ -67,6 +65,7 @@ def keymap_dict_to_console(processed_keymap):
 		result[3] = ["", "", ""] + layer[3][:6] + layer[3][6:] + ["", "", ""]
 		return result
 
+def keymap_dict_to_console(processed_keymap):
 	# ASCII art
 	# Pad the rows so we have a neat grid
 	for name in processed_keymap.keys():
@@ -128,9 +127,28 @@ def keymap_dict_to_html(processed_keymap, dir="output/"):
 	    file.write(str(soup.prettify()))
 	    print("Saved:", path)
 
+def keymap_dict_to_json(processed_keymap, dir="output"):
+	with open("kyria-template.json", "r") as f:
+		template = f.read()
+
+	for name, layer in processed_keymap.items():
+		result = template  # copy the template
+		layer = pad_rows(layer)
+		for i, row in enumerate(layer):
+			for j, key in enumerate(row):
+				if key == "trans" or key == "":
+					key = "0"
+				# print(f"{i},{j:02}", key.__repr__().replace("'", ""), key)
+				result = result.replace(f"{i},{j:02}", key.__repr__().replace("'", ""))
+
+		path = os.path.join(dir, f"kyria-{name}.json")
+		with open(path, "w") as f:
+			f.write(result)
+		print(path)
 
 if __name__ == '__main__':
 	km = keymap_to_dict()
-	keymap_dict_to_console(km)
-	keymap_dict_to_html(km)
+	# keymap_dict_to_console(km)
+	# keymap_dict_to_html(km)
+	keymap_dict_to_json(km)
 	# pprint(processed_keymap, compact=True, width=200, sort_dicts=False)
