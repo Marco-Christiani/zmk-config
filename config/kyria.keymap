@@ -77,7 +77,7 @@
 			bindings = <
 	&kp ESC       &kp Q &kp W &kp E &lt RGB R &lt MEDIA T                                             &lt BLUETOOTH Y &kp U  &kp I     &kp O   &kp P    &kp BSPC
 	&mto LCTRL TAB &mt LCTL A &kp S &kp D &lt NAV F &kp G                                             &kp H &kp J  &kp K     &kp L   &mt RCTRL SEMI &mtp RCTRL SQT
-	&kp LSHFT &mt LSHFT Z &mt LGUI X &mt LALT C &kp V &mt LSHFT B &caps_word C_PREV          &kp C_NEXT &none     &mt RSHFT N &kp M  &mt RALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RSHFT
+	&kp LSHFT &mt LSHFT Z &mt LGUI X &mt LALT C &kp V &mt LSHFT B &caps_word &kp C_PREV      &kp C_NEXT &none     &mt RSHFT N &kp M  &mt RALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RSHFT
 	                     &kp LG(LC(UP)) &kp LG(LC(DOWN)) &lto NUMPAD BSPC &kp RET &sl SWAP &sl SWAP &kp SPACE &lto SYMBOLS ESC &kp C_PP &mo RGB
 			>;
 
