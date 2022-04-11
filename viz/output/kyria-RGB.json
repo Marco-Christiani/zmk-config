@@ -65,7 +65,7 @@
     {
       "x": 9
     },
-    "rgb_ug\nRGB_SAI"
+    "0"
   ],
   [
     {
@@ -80,11 +80,11 @@
     {
       "x": 7
     },
-    "rgb_ug\nRGB_HUI",
+    "0",
     {
       "x": 1
     },
-    "rgb_ug\nRGB_BRI"
+    "0"
   ],
   [
     {
@@ -95,7 +95,7 @@
     {
       "x": 5
     },
-    "rgb_ug\nRGB_TOG"
+    "0"
   ],
   [
     {
@@ -106,8 +106,8 @@
     {
       "x": 13
     },
-    "rgb_ug\nRGB_SPI",
-    "rgb_ug\nRGB_EFF"
+    "rgb_ug\nRGB_TOG",
+    "rgb_ug\nRGB_HUI"
   ],
   [
     {

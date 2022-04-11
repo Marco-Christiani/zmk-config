@@ -21,7 +21,7 @@ def remove_symbols(arr: List[str]):
 	return result
 
 def keymap_to_dict():
-	with open("/Users/mchris/zmk-config/config/kyria.keymap", "r") as f:
+	with open("/home/marco/Documents/Github/zmk-config/config/kyria.keymap", "r") as f:
 		data = f.readlines()
 
 	layer_names = [l.split("#define ")[1].strip().split()[0] for l in data if "#define" in l]
@@ -49,6 +49,9 @@ def keymap_to_dict():
 		for row in layer:
 			kc += len(row)
 
+	# Pad the rows so we have a neat grid
+	for name in processed_keymap.keys():
+		processed_keymap[name] = pad_rows(processed_keymap[name])
 	print("Layers:", layer_names)
 	print(len(processed_keymap), "rows of keys.")
 	print(kc, "total keys (including &trans)")
@@ -56,20 +59,20 @@ def keymap_to_dict():
 	return processed_keymap
 
 def pad_rows(layer):
-		# Turn into a 4x16 grid so we can pretty print it
-		# top two layers need 2 extra keys on the inside
-		# bottom thumb tow needs three extra keys on the outside
-		result = layer.copy()
-		result[0] = layer[0][:6] + ["", ""] + ["", ""] + layer[0][6:]
-		result[1] = layer[1][:6] + ["", ""] + ["", ""] + layer[1][6:]
-		result[3] = ["", "", ""] + layer[3][:6] + layer[3][6:] + ["", "", ""]
-		return result
+	# Turn into a 4x16 grid so we can pretty print it
+	# top two layers need 2 extra keys on the inside
+	# bottom thumb tow needs three extra keys on the outside
+	result = layer.copy()
+	result[0] = layer[0][:6] + ["", ""] + ["", ""] + layer[0][6:]
+	result[1] = layer[1][:6] + ["", ""] + ["", ""] + layer[1][6:]
+	result[3] = ["", "", ""] + layer[3][:6] + layer[3][6:] + ["", "", ""]
+	return result
 
 def keymap_dict_to_console(processed_keymap):
 	# ASCII art
-	# Pad the rows so we have a neat grid
-	for name in processed_keymap.keys():
-		processed_keymap[name] = pad_rows(processed_keymap[name])
+	# # Pad the rows so we have a neat grid
+	# for name in processed_keymap.keys():
+	# 	processed_keymap[name] = pad_rows(processed_keymap[name])
 
 	# Print the table to console
 	for name, layer in processed_keymap.items():
@@ -124,8 +127,8 @@ def keymap_dict_to_html(processed_keymap, dir="output/"):
 
 	path = os.path.join(dir, "output.html")
 	with open(path, "w", encoding = 'utf-8') as file:    
-	    file.write(str(soup.prettify()))
-	    print("Saved:", path)
+		file.write(str(soup.prettify()))
+		print("Saved:", path)
 
 def keymap_dict_to_json(processed_keymap, dir="output"):
 	with open("kyria-template.json", "r") as f:
@@ -149,6 +152,6 @@ def keymap_dict_to_json(processed_keymap, dir="output"):
 if __name__ == '__main__':
 	km = keymap_to_dict()
 	# keymap_dict_to_console(km)
-	# keymap_dict_to_html(km)
+	keymap_dict_to_html(km)
 	keymap_dict_to_json(km)
 	# pprint(processed_keymap, compact=True, width=200, sort_dicts=False)
