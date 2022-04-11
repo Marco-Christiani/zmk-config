@@ -13,13 +13,12 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define DEFAULT 0
-#define SWAP 1
-#define NUMPAD 2
-#define SYMBOLS 3
-#define NAV 4
-#define MEDIA 5
-#define RGB 6
-#define BLUETOOTH 7
+#define NUMPAD 1
+#define SYMBOLS 2
+#define NAV 3
+#define MEDIA 4
+#define RGB 5
+#define BLUETOOTH 6
 
 
 &mt {
