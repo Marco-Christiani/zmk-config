@@ -80,8 +80,6 @@
 	&kp LSHFT &mt LSHFT Z &mt LGUI X &mt LALT C &kp V &mt LSHFT B &caps_word &kp C_PREV      &kp C_NEXT &none     &mt RSHFT N &kp M  &mt RALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RSHFT
 	                     &kp LG(LC(UP)) &kp LG(LC(DOWN)) &lto NUMPAD BSPC &kp RET &sl SWAP &sl SWAP &kp SPACE &lto SYMBOLS ESC &kp C_PP &mo RGB
 			>;
-
-			sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
 		};
 
 		swap_layer {
@@ -91,8 +89,6 @@
 	&kp RSHFT &mt RGUI FSLH &kp DOT &kp COMMA &kp M &mt RSHFT N &none &kp C_PP   &caps_word  &none &mt LSHFT B &kp V  &mt LALT C &mt LGUI X &mt LSHFT Z &kp LSHFT
 	                     &mo RGB &kp C_NEXT &lto SYMBOLS ESC &kp SPACE &trans         &trans &kp RET    &lto NUMPAD BSPC &kp C_PREV &kp C_MUTE
 			>;
-
-			sensor-bindings = <&inc_dec_kp PG_UP PG_DN &inc_dec_kp C_VOL_DN C_VOL_UP>;
 		};
 
 		numpad_layer {
