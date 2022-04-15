@@ -39,12 +39,12 @@
 	};
 	*/
 	
+	ZMK_MACRO(tmux_prefix,
+		wait-ms = <40>;
+		tap-ms = <40>; // wait a couple ms bw key presses
+		bindings = <&macro_tap &kp LCTRL &kp S>;
+	);
     macros {	
-		ZMK_MACRO(tmux_prefix,
-			wait-ms = <40>;
-			tap-ms = <40>; // wait a couple ms bw key presses
-			bindings = <&macro_tap &kp LCTRL &kp S>;
-		);
         vim_cmd_mode: vim_cmd_mode {
             label = "ZM_vim_cmd_mode";
             compatible = "zmk,behavior-macro";
