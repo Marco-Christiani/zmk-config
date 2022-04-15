@@ -38,7 +38,7 @@
 		init-delay-ms = <150>;
 	};
 	*/
-	{
+	
     macros {
         vim_wq: zed_em_kay {
             label = "ZM_vim_wq";
