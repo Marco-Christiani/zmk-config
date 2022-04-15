@@ -37,7 +37,7 @@
             #binding-cells = <0>;
 			wait-ms = <40>;
 			tap-ms = <40>; // wait a couple ms bw key presses
-            bindings = <&macro_tap &kp LCTRL(S)>;
+            bindings = <&macro_tap &kp LC(S)>;
         };
 		
         wm_numpad: wm_numpad {
