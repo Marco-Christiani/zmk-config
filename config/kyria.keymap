@@ -83,9 +83,18 @@
 			#binding-cells = <2>;
 			flavor = "hold-preferred";
 			tapping-term-ms = <200>;
-			quick-tap-ms = <0>;
+			quick-tap-ms = <20>; // quick tap+hold triggers tap repeat
 			bindings = <&mo>, <&kp>;
 		};
+		ltog: layer_tog_other_hold {
+			compatible = "zmk,behavior-hold-tap";
+			label = "LAYER_TOG_OTHER_HOLD";
+			#binding-cells = <2>;
+			flavor = "hold-preferred";
+			tapping-term-ms = <200>;
+			quick-tap-ms = <0>;
+			bindings = <&tog>, <&kp>;
+		}
 		td_sym_vim: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0";
@@ -108,10 +117,10 @@
 		default_layer {
 			label = "Default";
 			bindings = <
-	&kp ESC        &kp Q       &kp W       &lt RGB E     &kp R         &kp T                                                                    &kp Y       &lt BLUETOOTH U &kp I          &kp O        &kp P          &kp BSPC
-	&mto LSHFT TAB &mt LCTRL A &kp S       &kp D         &kp F         &lt MEDIA G                                                              &kp H       &kp J           &kp K          &kp L        &mt RCTRL SEMI &mtp RCTRL SQT
-	&kp LCTRL      &mt LSHFT Z &mt LGUI X  &mt LALT C    &kp V         &mt LSHFT B     &kp LG(ENTER) &kp DEL    &wm_numpad        &kp LG(RIGHT) &mt RSHFT N &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RSHFT
-	                           &kp PAGE_UP &kp PAGE_DOWN &lto NAV BSPC &lto NUMPAD RET &kp SPACE     &kp DEL    &lto NUMPAD SPACE &td_sym_vim   &td_pp_tmux &kp C_NEXT
+	&kp ESC        &kp Q       &kp W       &lt RGB E     &kp R          &kp T                                                                    &kp Y       &lt BLUETOOTH U &kp I          &kp O        &kp P          &kp BSPC
+	&mto LSHFT TAB &mt LCTRL A &kp S       &kp D         &kp F          &lt MEDIA G                                                              &kp H       &kp J           &kp K          &kp L        &mt RCTRL SEMI &mtp RCTRL SQT
+	&kp LCTRL      &mt LSHFT Z &mt LGUI X  &mt LALT C    &kp V          &mt LSHFT B     &kp LG(ENTER) &kp DEL    &wm_numpad        &kp LG(RIGHT) &mt RSHFT N &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RSHFT
+	                           &kp PAGE_UP &kp PAGE_DOWN &ltog NAV BSPC &lto NUMPAD RET &kp SPACE     &kp DEL    &lto NUMPAD SPACE &td_sym_vim   &td_pp_tmux &kp C_NEXT
 			>;
 		};
 
@@ -139,10 +148,10 @@
 		nav_layer {
 			label = "Nav";
 			bindings = <
-	&kp LALT  &kp LA(LS(LCTRL)) &kp DQT       &kp UP   &kp LC(K) &kp LC(D)                                                    &trans &trans &trans &trans &trans &trans
-	&kp LSHFT &kp LCTRL         &kp LEFT      &kp DOWN &kp RIGHT &kp PG_UP                                                    &trans &trans &trans &trans &trans &trans
-	&trans    &kp LA(LSHFT)     &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &trans &trans      &trans         &trans           &trans &trans &trans &trans &trans &trans
-	                                          &trans   &trans    &trans    &trans &trans      &kp LG(LC(UP)) &kp LG(LC(DOWN)) &trans &trans &trans 
+	&kp LALT  &kp LA(LS(LCTRL)) &kp DQT       &kp UP   &kp LC(K) &kp LC(D)                                                           &trans &trans &trans &trans &trans &trans
+	&kp LSHFT &kp LCTRL         &kp LEFT      &kp DOWN &kp RIGHT &kp PG_UP                                                           &trans &trans &trans &trans &trans &trans
+	&trans    &kp LA(LSHFT)     &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &trans        &trans      &trans         &trans           &trans &trans &trans &trans &trans &trans
+	                                          &trans   &trans    &trans    &mt LSHFT RET &trans      &kp LG(LC(UP)) &kp LG(LC(DOWN)) &trans &trans &trans 
 			>;
 
 		};
