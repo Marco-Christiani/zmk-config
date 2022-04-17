@@ -139,9 +139,9 @@
 		nav_layer {
 			label = "Nav";
 			bindings = <
-	&kp LALT  &kp LA(LS(LCTRL)) &kp DQT       &kp UP   &kp LC(K) &kp LC(D)                                                        &trans &trans &trans &trans &trans &trans
+	&kp LALT  &mo LA(LS(LCTRL)) &kp DQT       &kp UP   &kp LC(K) &kp LC(D)                                                        &trans &trans &trans &trans &trans &trans
 	&kp LSHFT &kp LCTRL         &kp LEFT      &kp DOWN &kp RIGHT &kp PG_UP                                                        &trans &trans &trans &trans &trans &trans
-	&trans    &kp LA(LS)        &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &kp LC(LBKT) &kp LC(RBKT)      &trans           &trans &trans &trans &trans &trans &trans &trans
+	&trans    &mo LA(LS)        &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &kp LC(LBKT) &kp LC(RBKT)      &trans           &trans &trans &trans &trans &trans &trans &trans
 	                            &trans        &trans   &trans    &trans    &trans       &kp LG(LC(UP))    &kp LG(LC(DOWN)) &trans &trans &trans 
 			>;
 
