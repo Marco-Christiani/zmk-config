@@ -94,7 +94,7 @@
 			tapping-term-ms = <200>;
 			quick-tap-ms = <0>;
 			bindings = <&tog>, <&kp>;
-		}
+		};
 		td_sym_vim: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0";
