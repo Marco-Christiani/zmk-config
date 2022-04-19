@@ -109,9 +109,9 @@
 		default_layer {
 			label = "Default";
 			bindings = <
-	&kp ESC        &kp Q       &kp W      &lt RGB E   &kp R         &kp T                                                                           &kp Y       &lt BLUETOOTH U &kp I          &kp O        &kp P          &kp BSPC
-	&mto LSHFT TAB &mt LCTRL A &kp S      &kp D       &kp F         &lt MEDIA G                                                                     &kp H       &kp J           &kp K          &kp L        &mt RCTRL SEMI &mtp RCTRL SQT
-	&kp LCTRL      &mt LSHFT Z &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B    &kp LG(ENTER) &kp DEL               &wm_numpad &kp LG(RIGHT)     &mt RSHFT N &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RSHFT
+	&kp ESC        &kp Q       &kp W      &lt RGB E   &lt MEDIA R   &kp T                                                                           &kp Y       &lt BLUETOOTH U &kp I          &kp O        &kp P          &kp BSPC
+	&mto LSHFT TAB &mt LCTRL A &kp S      &kp D       &mt LSHFT F   &kp G                                                                           &kp H       &mt RSHFT J     &kp K          &kp L        &mt RCTRL SEMI &mtp RSHFT SQT
+	&kp LCTRL      &mt LSHFT Z &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B    &kp LG(ENTER) &kp DEL               &hp LA(LS(TAB)) &kp LA(TAB)  &mt RSHFT N &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RCTRL
 	                                      &kp PAGE_UP &kp PAGE_DOWN &lto NAVS BSPC &lto NAV RET  &lto NUMPAD SPACE     &kp DEL    &lto NUMPAD SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
 			>;
 		};
@@ -126,7 +126,7 @@
 			>;
 		};
 
-		symbol_layer {
+		symbol_layer { 
 			label = "Symbol";
 			bindings = <
 	&kp GRAVE &kp F1   &kp F2  &kp F3   &kp F4     &kp F5                                  &kp F6    &kp F7   &kp F8   &kp F9      &kp F10   &kp DEL
