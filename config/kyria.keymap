@@ -87,6 +87,13 @@
 			quick-tap-ms = <100>; // quick tap+hold triggers tap repeat
 			bindings = <&mo>, <&kp>;
 		};
+		navsh: nav_navsh {
+			compatible = "zmk,behavior-mod-morph";
+			label = "NAV_NAVSHIFT";
+			#binding-cells = <2>;
+			bindings = <&lt NAV>, <&lt NAVS>;
+			mods = <(RSHIFT, LSHIFT)>; 
+		};
 		td_sym_vim: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
             label = "TAP_DANCE_0";
@@ -112,9 +119,9 @@
 	&kp ESC        &kp Q       &kp W      &lt RGB F   &lt MEDIA P   &kp G                                                                              &kp J       &lt BLUETOOTH L &kp U          &kp Y        &kp SEMI       &kp BSPC
 	&mto LSHFT TAB &mt LCTRL A &kp R      &kp S       &mt LSHFT T   &kp D                                                                              &kp H       &mt RSHFT N     &kp E          &kp I        &mt RCTRL O    &mtp RSHFT SQT
 	&kp LCTRL      &mt LSHFT Z &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B    &kp LG(ENTER) &kp DEL               &kp LG(LEFT)  &kp LG(RIGHT)     &mt RSHFT K &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RCTRL
-	                                      &kp PAGE_UP &kp PAGE_DOWN &lto NAVS BSPC &lto NAV SPACE  &lto NUMPAD RET     &mtp LGUI DEL &lto NUMPAD SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
+	                                      &kp PAGE_UP &kp PAGE_DOWN &kp BSPC       &lto &navsh SPACE &lto NUMPAD RET      &mtp LGUI DEL &lto NUMPAD SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
 			>;
-		};
+		;
 
 		numpad_layer {
 			label = "Numpad";
