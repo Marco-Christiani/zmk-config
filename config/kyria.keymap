@@ -121,7 +121,7 @@
 	&kp LCTRL      &mt LSHFT Z &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B    &kp LG(ENTER) &kp DEL               &kp LG(LEFT)  &kp LG(RIGHT)     &mt RSHFT K &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RCTRL
 	                                      &kp PAGE_UP &kp PAGE_DOWN &kp BSPC       &lto &navsh SPACE &lto NUMPAD RET      &mtp LGUI DEL &lto NUMPAD SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
 			>;
-		;
+		};
 
 		numpad_layer {
 			label = "Numpad";
