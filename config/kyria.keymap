@@ -92,7 +92,7 @@
 			label = "NAV_NAVSHIFT";
 			#binding-cells = <2>;
 			bindings = <&lt NAV>, <&lt NAVS>;
-			mods = <(RSHIFT|LSHIFT)>; 
+			mods = <(MOD_RSFT|MOD_LSFT)>; 
 		};
 		td_sym_vim: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
