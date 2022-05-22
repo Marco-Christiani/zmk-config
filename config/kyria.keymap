@@ -89,14 +89,14 @@
 		};
 		navsh: nav_navsh {
 			compatible = "zmk,behavior-mod-morph";
-			label = "NAV_NAVSHIFT";
+			label = "NAV_NAVSH";
 			#binding-cells = <2>;
 			bindings = <&lt NAV>, <&lt NAVS>;
 			mods = <(MOD_RSFT|MOD_LSFT)>; 
 		};
 		nto: mo_nav_navsh {
 			compatible = "zmk,behavior-hold-tap";
-			label = "MO_NAV_NAVSHIFT";
+			label = "MO_NAV_NAVSH";
 			#binding-cells = <2>;
 			flavor = "hold-preferred";
 			tapping-term-ms = <200>;
