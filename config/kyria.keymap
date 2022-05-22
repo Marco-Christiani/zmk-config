@@ -116,10 +116,10 @@
 		default_layer {
 			label = "Default";
 			bindings = <
-	&kp ESC        &kp Q       &kp W      &lt RGB F   &lt MEDIA P   &kp G                                                                              &kp J       &lt BLUETOOTH L &kp U          &kp Y        &kp SEMI       &kp BSPC
-	&mto LSHFT TAB &mt LCTRL A &kp R      &kp S       &mt LSHFT T   &kp D                                                                              &kp H       &mt RSHFT N     &kp E          &kp I        &mt RCTRL O    &mtp RSHFT SQT
-	&kp LCTRL      &mt LSHFT Z &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B    &kp LG(ENTER) &kp DEL               &kp LG(LEFT)  &kp LG(RIGHT)     &mt RSHFT K &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RCTRL
-	                                      &kp PAGE_UP &kp PAGE_DOWN &lto NAVS BSPC &lto NAV SPACE  &lto NUMPAD RET     &mtp LGUI DEL &lto NUMPAD SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
+	&kp ESC        &kp Q       &kp W      &lt RGB F   &lt MEDIA P   &kp G                                                                                &kp J       &lt BLUETOOTH L &kp U          &kp Y        &kp SEMI       &kp BSPC
+	&mto LSHFT TAB &mt LCTRL A &kp R      &kp S       &mt LSHFT T   &kp D                                                                                &kp H       &mt RSHFT N     &kp E          &kp I        &mt RCTRL O    &mtp RSHFT SQT
+	&kp LCTRL      &mt LSHFT Z &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B    &kp LG(ENTER) &kp DEL               &kp LA(LS(TAB)) &kp LA(TAB)       &mt RSHFT K &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RCTRL
+	                                      &kp PAGE_UP &kp PAGE_DOWN &lto NAVS BSPC &lto NAV RET  &lto NUMPAD SPACE     &mtp LGUI DEL   &lto NUMPAD SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
 			>;
 		};
 
@@ -147,9 +147,9 @@
 		nav_layer {
 			label = "Nav";
 			bindings = <
-	&kp LALT  &kp LA(LS(LCTRL)) &kp LC(Z)     &kp UP   &kp LC(K) &kp LC(D)                                                           &trans &trans &trans &trans &trans &trans
-	&kp LGUI  &kp LCTRL         &kp LEFT      &kp DOWN &kp RIGHT &kp PG_UP                                                           &trans &trans &trans &trans &trans &trans
-	&kp LSHFT &kp LA(LSHFT)     &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &trans &trans      &trans         &trans           &trans &trans &trans &trans &trans &trans
+	&kp LALT &kp LA(LS(LCTRL)) &kp LC(Z)     &kp UP   &kp LC(K) &kp LC(D)                                                           &trans &trans &trans &trans &trans &trans
+	&kp LGUI &trans            &kp LEFT      &kp DOWN &kp RIGHT &kp PG_UP                                                           &trans &trans &trans &trans &trans &trans
+	&trans   &kp LA(LSHFT)     &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &trans &trans      &trans         &trans           &trans &trans &trans &trans &trans &trans
 	                                         &trans   &trans    &trans    &trans &trans      &kp LG(LC(UP)) &kp LG(LC(DOWN)) &trans &trans &trans 
 			>;
 
