@@ -91,7 +91,7 @@
 			compatible = "zmk,behavior-mod-morph";
 			label = "NAV_NAVSH";
 			#binding-cells = <2>;
-			bindings = <&lt NAV>, <&lt NAVS>;
+			bindings = <&mo NAV>, <&mo NAVS>;
 			mods = <(MOD_RSFT|MOD_LSFT)>; 
 		};
 		nto: mo_nav_navsh {
