@@ -21,7 +21,7 @@ def remove_symbols(arr: List[str]):
 	return result
 
 def keymap_to_dict():
-	with open("/home/marco/Documents/Github/zmk-config/config/kyria.keymap", "r") as f:
+	with open("/home/marco/Github/zmk-config/config/kyria.keymap", "r") as f:
 		data = f.readlines()
 
 	layer_names = [l.split("#define ")[1].strip().split()[0] for l in data if "#define" in l]
