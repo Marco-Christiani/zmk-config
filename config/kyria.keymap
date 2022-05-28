@@ -16,10 +16,9 @@
 #define NUMPAD 1
 #define SYMBOLS 2
 #define NAV 3
-#define NAVS 4
-#define MEDIA 5
-#define RGB 6
-#define BLUETOOTH 7
+#define MEDIA 4
+#define RGB 5
+#define BLUETOOTH 6
 
 
 &mt {
@@ -60,20 +59,11 @@
     };
 
 	behaviors {
-		mtp: mod_tap_permissive {
+		mtb: mod_tap_permissive {
 			compatible = "zmk,behavior-hold-tap";
 			label = "MOD_TAP_PERMISSIVE";
 			#binding-cells = <2>;
 			flavor = "balanced";
-			tapping-term-ms = <200>;
-			quick-tap-ms = <0>;
-			bindings = <&kp>, <&kp>;
-		};
-		mto: mod_tap_other_hold {
-			compatible = "zmk,behavior-hold-tap";
-			label = "MOD_TAP_OTHER_HOLD";
-			#binding-cells = <2>;
-			flavor = "hold-preferred";
 			tapping-term-ms = <200>;
 			quick-tap-ms = <0>;
 			bindings = <&kp>, <&kp>;
@@ -86,22 +76,6 @@
 			tapping-term-ms = <200>;
 			quick-tap-ms = <100>; // quick tap+hold triggers tap repeat
 			bindings = <&mo>, <&kp>;
-		};
-		navsh: nav_navsh {
-			compatible = "zmk,behavior-mod-morph";
-			label = "NAV_NAVSH";
-			#binding-cells = <0>;
-			bindings = <&mo NAV>, <&mo NAVS>;
-			mods = <(MOD_RSFT|MOD_LSFT)>; 
-		};
-		nto: mo_nav_navsh {
-			compatible = "zmk,behavior-hold-tap";
-			label = "MO_NAV_NAVSH";
-			#binding-cells = <2>;
-			flavor = "hold-preferred";
-			tapping-term-ms = <200>;
-			quick-tap-ms = <100>; // quick tap+hold triggers tap repeat
-			bindings = <&kp SPACE &navsh>;
 		};
 		td_sym_vim: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
@@ -125,10 +99,10 @@
 		default_layer {
 			label = "Default";
 			bindings = <
-	&kp ESC        &kp Q       &kp W      &lt RGB F   &lt MEDIA P   &kp G                                                                              &kp J       &lt BLUETOOTH L &kp U          &kp Y        &kp SEMI       &kp BSPC
-	&mto LSHFT TAB &mt LCTRL A &kp R      &kp S       &mt LSHFT T   &kp D                                                                              &kp H       &mt RSHFT N     &kp E          &kp I        &mt RCTRL O    &mtp RSHFT SQT
-	&kp LCTRL      &mt LSHFT Z &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B    &kp LG(ENTER) &kp DEL               &kp LG(LEFT)  &kp LG(RIGHT)     &mt RSHFT K &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RCTRL
-	                                      &kp PAGE_UP &kp PAGE_DOWN &kp BSPC &nto  &lto NUMPAD RET     &mtp LGUI DEL &lto NUMPAD SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
+	&kp ESC        &kp Q        &kp W      &lt RGB F   &lt MEDIA P   &kp G                                                                           &kp J       &lt BLUETOOTH L &kp U          &kp Y        &kp SEMI       &kp BSPC
+	&mt LSHFT TAB  &mtb LCTRL A &kp R      &kp S       &mt LSHFT T   &kp D                                                                           &kp H       &mt RSHFT N     &kp E          &kp I        &mt RCTRL O    &mt RSHFT SQT
+	&kp LCTRL      &mt LSHFT Z  &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B &kp DEL        &kp LG(ENTER)         &kp LG(LEFT)    &kp LG(RIGHT)  &mt RSHFT K &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &kp RCTRL
+	                                       &kp PAGE_UP &kp PAGE_DOWN &kp BSPC    &lto NAV SPACE &lto NUMPAD RET       &lto NUMPAD DEL &lto NAV SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
 			>;
 		};
 
@@ -156,21 +130,10 @@
 		nav_layer {
 			label = "Nav";
 			bindings = <
-	&kp LALT &kp LA(LS(LCTRL)) &kp LC(Z)     &kp UP   &kp LC(K) &kp LC(D)                                                           &trans &trans &trans &trans &trans &trans
-	&kp LGUI &trans            &kp LEFT      &kp DOWN &kp RIGHT &kp PG_UP                                                           &trans &trans &trans &trans &trans &trans
-	&trans   &kp LA(LSHFT)     &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &trans &trans      &trans         &trans           &trans &trans &trans &trans &trans &trans
-	                                         &trans   &trans    &trans    &trans &trans      &kp LG(LC(UP)) &kp LG(LC(DOWN)) &trans &trans &trans 
-			>;
-
-		};
-
-		nav_shift_layer {
-			label = "Nav-Shift";
-			bindings = <
-	&trans &trans &kp LC(LS(Z)) &kp LS(UP)   &kp LC(K)     &kp LC(D)                                                               &trans &trans &trans &trans &trans &trans
-	&trans &trans &kp LS(LEFT)  &kp LS(DOWN) &kp LS(RIGHT) &kp PG_UP                                                               &trans &trans &trans &trans &trans &trans
-	&trans &trans &kp LC(LS(K)) &kp LS(HOME) &kp LS(END)   &kp PG_DN &trans &trans      &trans         &trans           &trans &trans &trans &trans &trans &trans
-	                               &trans       &trans        &trans    &trans &trans      &kp LG(LC(UP)) &kp LG(LC(DOWN)) &trans &trans &trans 
+	&kp LALT  &kp LA(LS(LCTRL)) &kp LC(Z)     &kp UP   &kp LC(K) &kp LC(D)                                     &kp RC(D)        &kp RC(K) &kp UP   &kp RC(Z)     &kp RA(RS(RCTRL)) &kp RALT 
+	&kp LGUI  &mo LCTRL         &kp LEFT      &kp DOWN &kp RIGHT &kp PG_UP                                     &kp RG(LC(UP))   &kp RIGHT &kp DOWN &kp LEFT      &mo RCTRL         &kp RGUI 
+	&mo LSHFT &kp LA(LSHFT)     &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &trans &trans      &trans    &trans &kp RG(LC(DOWN)) &kp END   &kp HOME &kp RC(RS(K)) &kp RA(RSHFT)     &mo RSHFT   
+	                                          &trans   &trans    &trans    &trans &kp LSHFT   &kp RSHFT &trans &trans           &trans    &trans 
 			>;
 
 		};
