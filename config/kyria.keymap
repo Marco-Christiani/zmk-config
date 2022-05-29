@@ -131,8 +131,8 @@
 			label = "Nav";
 			bindings = <
 	&kp LALT  &kp LA(LS(LCTRL)) &kp LC(Z)     &kp UP   &kp LC(K) &kp LC(D)                                     &kp RC(D)        &kp RC(K) &kp UP   &kp RC(Z)     &kp RA(RS(RCTRL)) &kp RALT 
-	&kp LGUI  &kp LCTRL         &kp LEFT      &kp DOWN &kp RIGHT &kp PG_UP                                     &kp RG(LC(UP))   &kp RIGHT &kp DOWN &kp LEFT      &kp RCTRL         &kp RGUI 
-	&kp LSHFT &kp LA(LSHFT)     &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &trans &trans      &trans    &trans &kp RG(LC(DOWN)) &kp END   &kp HOME &kp RC(RS(K)) &kp RA(RSHFT)     &kp RSHFT   
+	&kp LGUI  &kp LCTRL         &kp LEFT      &kp DOWN &kp RIGHT &kp PG_UP                                     &kp RG(LC(UP))   &kp LEFT  &kp DOWN &kp RIGHT     &kp RCTRL         &kp RGUI 
+	&kp LSHFT &kp LA(LSHFT)     &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &trans &trans      &trans    &trans &kp RG(LC(DOWN)) &kp HOME  &kp END  &kp RC(RS(K)) &kp RA(RSHFT)     &kp RSHFT   
 	                                          &trans   &trans    &trans    &trans &kp LSHFT   &kp RSHFT &trans &trans           &trans    &trans 
 			>;
 
