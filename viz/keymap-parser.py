@@ -4,7 +4,7 @@ from pprint import pprint
 from prettytable import PrettyTable, ALL
 from bs4 import BeautifulSoup
 
-symbol_list = ["ltog", "lto", "mto", "mtp", "kp", "lt", "mt", "bt"] # NB order matters! Longest first.
+symbol_list = ["ltog", "lto", "mto", "mtp", "mtb", "kp", "lt", "mt", "bt"] # NB order matters! Longest first.
 def remove_symbols(arr: List[str]):
 	result = []
 	for s in arr:
