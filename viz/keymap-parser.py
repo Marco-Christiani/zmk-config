@@ -149,7 +149,7 @@ def keymap_dict_to_json(processed_keymap, dir="output"):
 			f.write(result)
 		print(path)
 
-if __name__ == '__main__':
+if (__name__ == '__main__'):
 	km = keymap_to_dict()
 	# keymap_dict_to_console(km)
 	keymap_dict_to_html(km)
