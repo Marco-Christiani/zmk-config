@@ -13,13 +13,13 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define DEFAULT 0
-#define NUMPAD 1
-#define SYMBOLS 2
-#define NAV 3
-#define MEDIA 4
-#define RGB 5
-#define BLUETOOTH 6
-#define QWERTY 7
+#define QWERTY 1
+#define NUMPAD 2
+#define SYMBOLS 3
+#define NAV 4
+#define MEDIA 5
+#define RGB 6
+#define BLUETOOTH 7
 
 
 &mt {
@@ -106,6 +106,16 @@
 	                                       &kp PAGE_UP &kp PAGE_DOWN &kp BSPC    &lto NAV SPACE &lto NUMPAD RET       &lto NUMPAD DEL &lto NAV SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
 			>;
 		};
+				
+		qwerty_layer {
+			label = "Qwerty";
+			bindings = <
+	&kp ESC        &kp Q        &kp E      &lt RGB E   &lt MEDIA R   &kp T                                                                           &kp T       &lt BLUETOOTH Y &kp U          &kp I        &kp P       &caps_word
+	&mt LSHFT TAB  &mtb LCTRL A &kp S      &kp D       &mt LSHFT F   &kp G                                                                           &kp H       &mt RSHFT J     &kp K          &kp L        &mt RCTRL SEMI    &mt RSHFT SQT
+	&sk LCTRL      &mt LSHFT Z  &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B &tog QWERTY    &kp LG(ENTER)         &kp LG(LEFT)    &kp LG(RIGHT)  &mt RSHFT N &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &mt RCTRL BSLH
+	                                       &kp PAGE_UP &kp PAGE_DOWN &kp BSPC    &lto NAV SPACE &lto NUMPAD RET       &lto NUMPAD DEL &lto NAV SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
+			>;
+		};
 
 		numpad_layer {
 			label = "Numpad";
@@ -171,16 +181,5 @@
 			>;
 
 		};
-		
-		qwerty_layer {
-			label = "Qwerty";
-			bindings = <
-	&kp ESC        &kp Q        &kp E      &lt RGB E   &lt MEDIA R   &kp T                                                                           &kp T       &lt BLUETOOTH Y &kp U          &kp I        &kp P       &caps_word
-	&mt LSHFT TAB  &mtb LCTRL A &kp S      &kp D       &mt LSHFT F   &kp G                                                                           &kp H       &mt RSHFT J     &kp K          &kp L        &mt RCTRL SEMI    &mt RSHFT SQT
-	&sk LCTRL      &mt LSHFT Z  &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B &tog DEFAULT   &kp LG(ENTER)         &kp LG(LEFT)    &kp LG(RIGHT)  &mt RSHFT N &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &mt RCTRL BSLH
-	                                       &kp PAGE_UP &kp PAGE_DOWN &kp BSPC    &lto NAV SPACE &lto NUMPAD RET       &lto NUMPAD DEL &lto NAV SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
-			>;
-		};
-
 	};
 };
