@@ -8,7 +8,7 @@
       "x": 3,
       "a": 5
     },
-    "0",
+    "ext_power\nEP_TOG",
     {
       "x": 9
     },
@@ -106,8 +106,8 @@
     {
       "x": 13
     },
-    "C_PREV",
-    "C_VOL_DN"
+    "rgb_ug\nRGB_TOG",
+    "rgb_ug\nRGB_HUI"
   ],
   [
     {
@@ -118,7 +118,7 @@
     {
       "x": 9
     },
-    "0"
+    "rgb_ug\nRGB_SAD"
   ],
   [
     {
@@ -133,11 +133,11 @@
     {
       "x": 7
     },
-    "0",
+    "rgb_ug\nRGB_HUD",
     {
       "x": 1
     },
-    "0"
+    "rgb_ug\nRGB_BRD"
   ],
   [
     {
@@ -159,8 +159,8 @@
     {
       "x": 13
     },
-    "0",
-    "0"
+    "rgb_ug\nRGB_SPD",
+    "rgb_ug\nRGB_EFR"
   ],
   [
     {
@@ -171,7 +171,7 @@
     {
       "x": 10
     },
-    "C_PP"
+    "0"
   ],
   [
     {
