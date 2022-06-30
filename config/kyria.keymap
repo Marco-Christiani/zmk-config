@@ -19,6 +19,7 @@
 #define MEDIA 4
 #define RGB 5
 #define BLUETOOTH 6
+#define QWERTY 7
 
 
 &mt {
@@ -97,11 +98,11 @@
 		compatible = "zmk,keymap";
 
 		default_layer {
-			label = "Default";
+			label = "Colemak";
 			bindings = <
 	&kp ESC        &kp Q        &kp W      &lt RGB F   &lt MEDIA P   &kp G                                                                           &kp J       &lt BLUETOOTH L &kp U          &kp Y        &kp SEMI       &caps_word
 	&mt LSHFT TAB  &mtb LCTRL A &kp R      &kp S       &mt LSHFT T   &kp D                                                                           &kp H       &mt RSHFT N     &kp E          &kp I        &mt RCTRL O    &mt RSHFT SQT
-	&sk LCTRL      &mt LSHFT Z  &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B &kp DEL        &kp LG(ENTER)         &kp LG(LEFT)    &kp LG(RIGHT)  &mt RSHFT K &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &mt RCTRL BSLH
+	&sk LCTRL      &mt LSHFT Z  &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B &tog QWERTY    &kp LG(ENTER)         &kp LG(LEFT)    &kp LG(RIGHT)  &mt RSHFT K &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &mt RCTRL BSLH
 	                                       &kp PAGE_UP &kp PAGE_DOWN &kp BSPC    &lto NAV SPACE &lto NUMPAD RET       &lto NUMPAD DEL &lto NAV SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
 			>;
 		};
@@ -169,6 +170,16 @@
 	                         &bt BT_CLR &trans &trans &trans &trans                  &trans &trans &trans &trans &trans
 			>;
 
+		};
+		
+		qwerty_layer {
+			label = "Qwerty";
+			bindings = <
+	&kp ESC        &kp Q        &kp E      &lt RGB E   &lt MEDIA R   &kp T                                                                           &kp T       &lt BLUETOOTH Y &kp U          &kp I        &kp P       &caps_word
+	&mt LSHFT TAB  &mtb LCTRL A &kp S      &kp D       &mt LSHFT F   &kp G                                                                           &kp H       &mt RSHFT J     &kp K          &kp L        &mt RCTRL SEMI    &mt RSHFT SQT
+	&sk LCTRL      &mt LSHFT Z  &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B &tog DEFAULT   &kp LG(ENTER)         &kp LG(LEFT)    &kp LG(RIGHT)  &mt RSHFT N &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &mt RCTRL BSLH
+	                                       &kp PAGE_UP &kp PAGE_DOWN &kp BSPC    &lto NAV SPACE &lto NUMPAD RET       &lto NUMPAD DEL &lto NAV SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
+			>;
 		};
 
 	};
