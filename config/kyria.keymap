@@ -99,10 +99,10 @@
 		default_layer {
 			label = "Default";
 			bindings = <
-	&kp ESC        &kp Q        &kp W      &lt RGB F   &lt MEDIA P   &kp G                                                                           &kp J       &lt BLUETOOTH L &kp U          &kp Y        &kp SEMI       &caps_word
-	&mt LSHFT TAB  &mtb LCTRL A &kp R      &kp S       &mt LSHFT T   &kp D                                                                           &kp H       &mt RSHFT N     &kp E          &kp I        &mt RCTRL O    &mt RSHFT SQT
-	&sk LCTRL      &mt LSHFT Z  &mt LGUI X &mt LALT C  &kp V         &mt LSHFT B &kp DEL        &kp LG(ENTER)         &kp LG(LEFT)    &kp LG(RIGHT)  &mt RSHFT K &kp M           &mt LALT COMMA &mt RGUI DOT &mt RSHFT FSLH &mt RCTRL BSLH
-	                                       &kp PAGE_UP &kp PAGE_DOWN &kp BSPC    &lto NAV SPACE &lto NUMPAD RET       &lto NUMPAD DEL &lto NAV SPACE &td_sym_vim &td_pp_tmux     &kp C_NEXT
+    &kp  F6        &kp Q        &kp W      &lt RGB E   &lt MEDIA R   &kp T                                                                      &kp Y       &lt BLUETOOTH U &kp I          &kp O        &kp P           &caps_word
+    &mt  ESC LCTRL &mt LCTRL A  &kp S      &kp D       &mt LSHFT F   &kp G                                                                      &kp H       &mt RSHFT J     &kp K          &kp L        &mt RCTRL SEMI  &mt RSHFT SQT
+    &mtb LGUI TAB  &kp Z        &mt LALT X &mt LALT C  &kp V         &kp B    &kp F12        &kp F11            &kp F10          &kp F1         &mt RSHFT N &kp M           &mt RALT COMMA &mt RGUI DOT &mt RSHFT FSLH  &mt RCTRL BSLH
+                                          &kp PAGE_UP &kp PAGE_DOWN &kp BSPC &lto NAV SPACE &lto NUMPAD RET    &lto NUMPAD BSPC &lto NAV SPACE &kp ESC     &td_pp_tmux     &kp C_NEXT
 			>;
 		};
 
@@ -110,7 +110,7 @@
 			label = "Numpad";
 			bindings = <
 	&trans &trans &trans &trans         &kp LBRC         &kp RBRC                               &kp F1            &kp N7 &kp N8 &kp N9 &kp DEL   &trans
-	&trans &trans &trans &trans         &kp LBKT         &kp RBKT                               &kp LC(PAGE_UP)   &kp N4 &kp N5 &kp N6 &kp BSLH  &kp KP_MULTIPLY
+	&trans &trans &trans &kp RALT       &kp LBKT         &kp RBKT                               &kp LC(PAGE_UP)   &kp N4 &kp N5 &kp N6 &kp BSLH  &kp KP_MULTIPLY
 	&trans &trans &trans &trans         &kp LPAR         &kp RPAR &trans &trans   &trans &trans &kp LC(PAGE_DOWN) &kp N1 &kp N2 &kp N3 &kp PIPE  &kp EQUAL
 	                     &kp LG(LC(UP)) &kp LG(LC(DOWN)) &trans   &trans &trans   &trans &trans &kp KP_DOT        &kp N0 &trans
 			>;
@@ -130,10 +130,10 @@
 		nav_layer {
 			label = "Nav";
 			bindings = <
-	&kp LALT  &kp LA(LS(LCTRL)) &kp LC(Z)     &kp UP   &kp LC(K) &kp LC(D)                                     &kp RC(D)        &kp RC(K) &kp UP   &kp RC(Z)     &kp RA(RS(RCTRL)) &kp RALT 
-	&kp LGUI  &kp LCTRL         &kp LEFT      &kp DOWN &kp RIGHT &kp PG_UP                                     &kp RG(LC(UP))   &kp LEFT  &kp DOWN &kp RIGHT     &kp RCTRL         &kp RGUI 
-	&kp LSHFT &kp LA(LSHFT)     &kp LC(LS(K)) &kp HOME &kp END   &kp PG_DN &trans &trans      &trans    &trans &kp RG(LC(DOWN)) &kp HOME  &kp END  &kp RC(RS(K)) &kp RA(RSHFT)     &kp RSHFT   
-	                                          &trans   &trans    &trans    &trans &kp LSHFT   &kp RSHFT &trans &trans           &trans    &trans 
+	&kp LALT  &trans     &trans     &trans    &trans     &trans                                    &kp K_CUT &kp K_COPY &kp K_PASTE  &kp K_UNDO  &kp K_REDO &kp RALT 
+	&kp LGUI  &kp LG(1)  &kp LG(2)  &kp LG(3) &kp LG(4)  &kp LG(5)                                 &kp LEFT  &kp DOWN   &kp UP       &kp RIGHT   &kp RCTRL  &kp RGUI 
+	&kp LSHFT &kp LG(6)  &kp LG(7)  &kp LG(8) &kp LG(9)  &kp LG(0) &trans &trans   &trans  &trans  &trans    &kp HOME   &kp END      &trans      &trans     &kp RSHFT   
+	                                          &trans     &trans    &trans &trans   &trans  &trans  &trans    &trans     &trans       &trans 
 			>;
 
 		};
