@@ -17,7 +17,7 @@
 // Skip Mouse layer...
 #define BUTTON 2
 #define MEDIA 3
-#define NUMPAD 4
+#define NUM 4
 #define SYM 5
 #define FUN 6
 #define RGB 7
