@@ -42,7 +42,7 @@
     &kp  F6        &kp Q         &kp W      &kp E         &kp R       &kp T                                                                   &kp Y       &kp U       &kp I         &kp O       &kp P           &kp BSPC
     &mt  ESC LCTRL &mt LGUI A    &mt LALT S &mt LCTRL D   &mt LSHFT F &kp G                                                                   &kp H       &mt RSHFT J &mt RCTRL K   &mt RALT L  &mt RGUI SEMI   &mt RSHFT SQT
     &kp  TAB       &lt BUTTON Z  &kp X      &kp C         &kp V       &kp B         &kp F12       &kp F11            &kp F10     &kp F1       &kp N       &kp M       &kp COMMA     &kp DOT     &lt BUTTON FSLH &mt RCTRL BSLH
-                                            &trans        &mo RGB     &lt MEDIA ESC &lt NAV SPACE &kp TAB            &lt SYM RET &lt NUM BSPC &lt FUN DEL &kp C_PP    &kp C_NEXT
+                                            &none        &mo RGB     &lt MEDIA ESC &lt NAV SPACE &kp TAB            &lt SYM RET &lt NUM BSPC &lt FUN DEL &kp C_PP    &kp C_NEXT
 			>;
 		};
 
@@ -55,9 +55,9 @@
 	                                          &trans        &trans      &trans        &trans        &kp RET            &trans      &kp BSPC     &kp DEL     &trans     &trans
 			>;
     };
+
     // SKIP MOUSE LAYER...
-// &kp LG(1)  &kp LG(2)  &kp LG(3) &kp LG(4)  &kp LG(5)
-// &kp LG(6)  &kp LG(7)  &kp LG(8) &kp LG(9)  &kp LG(0)
+
 		button_layer {
 			label = "Button";
 			bindings = <
@@ -76,7 +76,6 @@
 	&trans          &trans         &trans     &trans        &trans      &trans        &trans        &trans             &trans      &trans       &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &bt BT_SEL 4
 	                                          &trans        &trans      &trans        &trans        &trans             &trans      &trans       &trans       &kp C_PP     &kp C_MUTE
 			>;
-
 		};
 
 		numpad_layer {
@@ -97,7 +96,6 @@
 	&trans         &kp TILDE  &kp EXCL       &kp AT         &kp HASH    &kp PIPE      &trans        &trans            &trans       &trans       &trans      &trans        &trans        &trans      &trans         &trans
 	                                         &kp LBKT       &kp RBKT    &kp LPAR      &kp RPAR      &kp UNDER         &trans       &trans       &trans      &trans        &trans
 			>;
-
 		};
 
 		fun_layer {
