@@ -51,7 +51,7 @@
 			bindings = <
 	&trans          &trans         &trans     &trans        &trans      &trans                                                                  &kp K_REDO  &kp K_PASTE &kp K_COPY    &kp K_CUT   &kp K_UNDO      &trans
   &trans          &kp LGUI       &kp LALT   &kp LCTRL     &kp LSHFT   &trans                                                                  &kp CAPS    &kp LEFT    &kp DOWN      &kp UP      &kp RIGHT       &trans
-	&trans          &trans         &trans     &kp LALT(LEFT)&kp LALT(RIGHT) &trans    &trans        &trans             &trans      &trans       &kp INSERT  &kp HOME    &kp PAGE_DOWN &kp PAGE_UP &kp END         &trans
+	&trans          &trans         &trans     &kp LA(LEFT)&kp LA(RIGHT) &trans    &trans        &trans             &trans      &trans       &kp INSERT  &kp HOME    &kp PAGE_DOWN &kp PAGE_UP &kp END         &trans
 	                                          &trans        &trans      &trans        &trans        &kp RET            &trans      &kp BSPC     &kp DEL     &trans     &trans
 			>;
     };
@@ -79,7 +79,7 @@
 		};
 
 		numpad_layer {
-			label = "Numpad";
+			label = "Num";
 			bindings = <
 	&trans         &kp LBKT       &kp N7     &kp N8         &kp N9      &kp RBKT                                                                &trans      &trans        &trans        &trans      &trans         &trans
 	&trans         &kp SEMI       &kp N4     &kp N5         &kp N6      &kp EQUAL                                                               &trans      &kp RSHFT     &kp RCTRL     &kp RALT    &kp RGUI       &trans
@@ -89,7 +89,7 @@
 		};
 
 		symbol_layer { 
-			label = "Symbol";
+			label = "Sym";
 			bindings = <
 	&trans         &kp LBRC   &kp AMPS       &kp STAR       &kp LPAR    &kp RBRC                                                                &trans      &trans        &trans        &trans      &trans         &trans
 	&trans         &kp COLON  &kp DOLLAR     &kp PRCNT      &kp CARET   &kp PLUS                                                                &trans      &kp RSHFT     &kp RCTRL     &kp RALT    &kp RGUI       &trans
