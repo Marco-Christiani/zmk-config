@@ -54,6 +54,7 @@
 	&trans          &trans         &trans     &kp LALT(LEFT)&kp LALT(RIGHT) &trans    &trans        &trans             &trans      &trans       &kp INSERT  &kp HOME    &kp PAGE_DOWN &kp PAGE_UP &kp END         &trans
 	                                          &trans        &trans      &trans        &trans        &kp RET            &trans      &kp BSPC     &kp DEL      &trans      &trans
 			>;
+    };
     // SKIP MOUSE LAYER...
 // &kp LG(1)  &kp LG(2)  &kp LG(3) &kp LG(4)  &kp LG(5)
 // &kp LG(6)  &kp LG(7)  &kp LG(8) &kp LG(9)  &kp LG(0)
@@ -65,6 +66,7 @@
 	&trans          &kp K_UNDO     &kp K_CUT  &kp K_COPY    &kp K_PASTE &kp K_REDO    &trans        &trans             &trans      &trans       &kp K_REDO  &kp K_PASTE &kp K_COPY    &kp K_CUT   &kp K_UNDO      &trans
 	                                          &trans        &trans      &trans        &trans        &trans             &trans      &trans       &trans      &trans      &trans
 			>;
+    };
 
 		media_layer {
 			label = "Media";
@@ -117,6 +119,5 @@
 	                                       &trans         &trans      &trans           &trans        &trans             &trans      &trans       &trans          &trans          &trans
 			>;
 		};
-
 	};
 };
