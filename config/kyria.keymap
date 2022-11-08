@@ -21,6 +21,14 @@
  * - Intentionally using Left Alt on the right because using software-side Colemak swap remaps this key sometimes
  *    - For linux, I have the software fix in place but doing this just in case for other OS's.
  *    - Not sure of any keybindings that rely on this directionality? Everything works with LA though so why not
+ * TODO
+ * ----
+ * - Make BSPC repeatable
+ * - caps_word is messed up since O on colemak is SEMI on Qwerty, causing it to exit
+ * - Button layer for Miryoku is really what I was doing with the LNAV layer, probably move that here
+ * - Python script for keymap parsing should instead use an AST parser
+ * - Python script for keymap parsing needs to be fixed for JSON output
+ * - SYM: consider stacking LPAR/RPAR and LBKT/RBKT on thumb rows
  */
 
 #include <../boards/shields/kyria/boards/nice_nano.overlay>
