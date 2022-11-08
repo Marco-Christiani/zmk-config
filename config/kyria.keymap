@@ -55,6 +55,7 @@
 #define wm7 LG(7)
 #define wm8 LG(8)
 #define wm9 LG(9)
+#define wm0 LG(0)
 
 
 &mt {
