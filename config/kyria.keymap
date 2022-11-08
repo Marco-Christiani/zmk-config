@@ -46,6 +46,15 @@
 // Keypress Definitions
 #define wnext LG(LA(N)) // window manager next workspace
 #define wprev LG(LA(P)) // window manager prev workspace
+#define wm1 LG(1)
+#define wm2 LG(2)
+#define wm3 LG(3)
+#define wm4 LG(4)
+#define wm5 LG(5)
+#define wm6 LG(6)
+#define wm7 LG(7)
+#define wm8 LG(8)
+#define wm9 LG(9)
 
 
 &mt {
