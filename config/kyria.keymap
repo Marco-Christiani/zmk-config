@@ -100,6 +100,7 @@
     };
 
     // SKIP MOUSE LAYER...
+    // DONT USE BUTTON LAYER...
 		button_layer {
 			label = "Button";
 			bindings = <
@@ -164,7 +165,7 @@
 			label = "L-Nav";
 			bindings = <
 	&trans        &trans       &trans      &kp BSPC       &kp RET     &trans                                                                     &trans          &trans          &trans          &trans          &trans          &trans
-	&trans        &kp LEFT     &kp DOWN    &kp UP         &kp RIGHT   &kp PG_UP                                                                  &trans          &trans          &trans          &trans          &trans          &trans
+	&trans        &kp LEFT     &kp UP      &kp DOWN       &kp RIGHT   &kp PG_UP                                                                  &trans          &trans          &trans          &trans          &trans          &trans
 	&kp K_REDO    &kp K_UNDO   &kp K_CUT   &kp K_COPY     &kp K_PASTE &kp PG_DN        &trans        &trans             &trans      &trans       &trans          &trans          &trans          &trans          &trans          &trans
 	                                       &trans         &trans      &trans           &trans        &trans             &trans      &trans       &trans          &trans          &trans
 			>;
@@ -173,8 +174,8 @@
 			label = "WM";
 			bindings = <
 	&trans        &trans       &trans      &kp wprev      &kp wnext   &trans                                                                     &trans          &kp wprev       &kp wnext       &trans          &trans          &trans
-	&kp LSHFT     &kp wm1      &kp wm2     &kp wm3        &kp wm4     &kp wm5                                                                    &kp wm6         &kp wm7         &kp wm8         &kp wm9         &kp wm0         &trans
-	&trans        &trans       &trans      &trans         &trans      &trans           &trans        &trans             &trans      &trans       &trans          &trans          &trans          &trans          &trans          &trans
+	&kp LSHFT     &kp wm1      &kp wm2     &kp wm3        &kp wm4     &kp wm9                                                                    &kp wm0  		 &kp wm5         &kp wm6         &kp wm7         &kp wm8         &trans
+	&trans        &kp wm5      &kp wm6     &kp wm7 	      &kp wm8     &kp wm0          &trans        &trans             &trans      &trans       &kg wm9         &kp wm1         &kp wm2         &kp wm3         &kp wm4         &trans
 	                                       &trans         &trans      &trans           &trans        &trans             &trans      &trans       &trans          &trans          &trans
 			>;
 		};
