@@ -29,6 +29,7 @@
  * - Python script for keymap parsing should instead use an AST parser
  * - Python script for keymap parsing needs to be fixed for JSON output
  * - SYM: consider stacking LPAR/RPAR and LBKT/RBKT on thumb rows
+ * - Tap-Dance for <C-s-[>
  */
 
 #include <../boards/shields/kyria/boards/nice_nano.overlay>
