@@ -16,11 +16,29 @@
  *    - Cut/Copy/Paste/Undo/Redo on left side as well
  * - FUN
  *    - caps_word thumb
+ *
  * Notes
  * -----
  * - Intentionally using Left Alt on the right because using software-side Colemak swap remaps this key sometimes
  *    - For linux, I have the software fix in place but doing this just in case for other OS's.
  *    - Not sure of any keybindings that rely on this directionality? Everything works with LA though so why not
+ * - I have a strong dislike for Miryoku chosing to place Space/Tab on left and Backspace/Return on right along with no arrow keys on the left
+ *    - I think this is motivated by gaming? I cant think of a reason
+ *    - This seriously limits single hand operation when using mouse in the browser
+ *    - I fear my muscle memory would make fixing this uncomfortable so a lot of my changes are trying to monkey patch this
+ *
+ *
+ * Spaces Available for remaps
+ * ---------------------------
+ * - Default layer: 
+ *    - Top right corner is BSPC, completely unused
+ *    - DEL thumb key: just a rare key in a valuable place
+ *    - Top row thumb keys on right
+ *    - Tab is in a valuable place but a rare-ish key (editors autoindent or I use bindings)
+ *      - I use tab for cycling selections/inputs in browser without mouse, so could be on the right hand, left is more valuable to me
+ *    - 2 leftmost keys on bottom row, layer key could have a tap behavior and F2 is now obsolete
+ * - BUTTON layer: completely unused
+ * 
  * TODO
  * ----
  * - Make BSPC repeatable
@@ -83,9 +101,9 @@
 		default_layer {
 			label = "Default";
 			bindings = <
-    &kp LBKT        &kp Q         &kp W      &kp E         &kp R       &kp T                                                                        &kp Y       &kp U       &kp I         &kp O       &kp P           &kp BSPC
-    &kp LPAR        &mt LGUI A    &mt LALT S &mt LCTRL D   &mt LSHFT F &kp G                                                                        &kp H       &mt RSHFT J &mt RCTRL K   &mt LALT L  &mt RGUI SEMI   &mt RSHFT SQT
-    &mt LCTRL LBRC  &lt BUTTON Z  &kp X      &kp C         &kp V       &kp B        &lt MEDIA MINUS &kp UNDER              &kp wnext   &kp wprev    &kp N       &kp M       &kp COMMA     &kp DOT     &lt BUTTON FSLH &mt RCTRL BSLH
+    &kp LBKT        &kp Q         &kp W      &kp F         &kp P       &kp G                                                                        &kp J       &kp L       &kp U         &kp Y       &kp SEMI        &kp BSPC
+    &kp LPAR        &mt LGUI A    &mt LALT R &mt LCTRL S   &mt LSHFT T &kp D                                                                        &kp H       &mt RSHFT N &mt RCTRL E   &mt LALT I  &mt RGUI O      &mt RSHFT SQT
+    &mt LCTRL LBRC  &lt BUTTON Z  &kp X      &kp C         &kp V       &kp B        &lt MEDIA MINUS &kp UNDER              &kp wnext   &kp wprev    &kp K       &kp M       &kp COMMA     &kp DOT     &lt BUTTON FSLH &mt RCTRL BSLH
                                              &kp F2        &mo RGB     &lt WNAV ESC &lt NAV SPACE  &lt LNAV TAB            &lt SYM RET &lt NUM BSPC &lt FUN DEL &kp C_PP    &kp C_NEXT
 			>;
 		};
