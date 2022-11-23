@@ -175,7 +175,7 @@
 			bindings = <
 	&trans        &trans       &trans      &kp wprev      &kp wnext   &trans                                                                     &trans          &kp wprev       &kp wnext       &trans          &trans          &trans
 	&kp LSHFT     &kp wm1      &kp wm2     &kp wm3        &kp wm4     &kp wm9                                                                    &kp wm0  		 &kp wm5         &kp wm6         &kp wm7         &kp wm8         &trans
-	&trans        &kp wm5      &kp wm6     &kp wm7 	      &kp wm8     &kp wm0          &trans        &trans             &trans      &trans       &kg wm9         &kp wm1         &kp wm2         &kp wm3         &kp wm4         &trans
+	&trans        &kp wm5      &kp wm6     &kp wm7 	      &kp wm8     &kp wm0          &trans        &trans             &trans      &trans       &kp wm9         &kp wm1         &kp wm2         &kp wm3         &kp wm4         &trans
 	                                       &trans         &trans      &trans           &trans        &trans             &trans      &trans       &trans          &trans          &trans
 			>;
 		};
