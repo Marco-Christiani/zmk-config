@@ -54,6 +54,16 @@
  * - SYM: consider stacking LPAR/RPAR and LBKT/RBKT on thumb rows
  * - Tap-Dance for <C-s-[>
  * - Nav and Num can be merged after wm bindings are confirmed -> LNAVNUM and NAVNUM
+ * - Cross Platform Compat:
+ *   - On BT output switch, WM layer should change
+ *   - Or, manually switchable default layer to support multiple WM versions
+ *
+ * Improvements
+ * ------------
+ * - TAB on DEFAULT: rare key, valuable position
+ * - UNDER: common key, would like on DEFAULT
+ * - LBRC/RBRC: common key, pinky outer column is so uncomfortable.
+ * - Bracket, Brace, Paran: Needs another redesign. Simply uncomfortable
  */
 
 #include <../boards/shields/kyria/boards/nice_nano.overlay>
@@ -128,10 +138,10 @@
 		default_layer {
 			label = "Default";
 			bindings = <
-    &lt RGB LBKT    &kp Q         &kp W      &kp F         &kp P           &kp G                                                                        &kp J       &kp L       &kp U         &kp Y       &kp SEMI        &kp BSPC
-    &kp LPAR        &mt LGUI A    &mt LALT R &mt LCTRL S   &mt LSHFT T     &kp D                                                                        &kp H       &mt RSHFT N &mt RCTRL E   &mt LALT I  &mt RGUI O      &mt RSHFT SQT
-    &mt LCTRL LBRC  &lt MEDIA Z   &kp X      &kp C         &kp V           &kp B        &lt MEDIA MINUS &kp UNDER              &kp wm_next   &kp wm_prev    &kp K       &kp M       &kp COMMA     &kp DOT     &kp FSLH        &mt RCTRL BSLH
-                                             &kp C_PREV    &mt LSHFT MINUS &lt WNAV ESC &lt NAV SPACE  &lt LNAV TAB            &lt SYM RET &lt NUM BSPC &lt FUN DEL &kp C_PP    &kp C_NEXT
+    &lt RGB LBKT    &kp Q         &kp W      &kp F         &kp P           &kp G                                                                            &kp J       &kp L       &kp U         &kp Y       &kp SEMI        &kp BSPC
+    &kp LPAR        &mt LGUI A    &mt LALT R &mt LCTRL S   &mt LSHFT T     &kp D                                                                            &kp H       &mt RSHFT N &mt RCTRL E   &mt LALT I  &mt RGUI O      &mt RSHFT SQT
+    &mt LCTRL LBRC  &lt MEDIA Z   &kp X      &kp C         &kp V           &kp B        &lt MEDIA MINUS &kp UNDER              &kp wm_prev   &kp wm_next    &kp K       &kp M       &kp COMMA     &kp DOT     &kp FSLH        &mt RCTRL BSLH
+                                             &kp C_PREV    &mt LSHFT MINUS &lt WNAV ESC &lt NAV SPACE   &lt LNAV TAB           &lt SYM RET   &lt NUM BSPC   &lt FUN DEL &kp C_PP    &kp C_NEXT
 			>;
 		};
 
