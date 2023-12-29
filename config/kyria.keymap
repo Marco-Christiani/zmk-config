@@ -1,7 +1,70 @@
 /*
- * Copyright (c) 2020 The ZMK Contributors
+ * Miryoku Changes
+ * ---------------
+ * - No mouse layer
+ * - Second row of thumb keys
+ * - Extra column on left and right halves
+ * - 2 Extra keys on bottom row each side
+ * - DEFAULT
+ *    - WNAV where MEDIA was
+ *    - MEDIA to thumb top row
+ *    - MEDIA replaces BUTTON
+ *    - LSHFT and MINUS thumb row
+ * - NAV
+ *    - Merged with NUM layer, NUMNAV: Num left Nav right
+ *    - Reorder Undo/Cut/Copy/Paste to match ZXCV
+ *    - Move INS and CAPS to outer column bc rare keys, instead have browser back and forward
+ *    - Add nav-swap for one-handed editing with mouse selection
+ *    - Add BSPC and RET
+ *    - Cut/Copy/Paste/Undo/Redo on left side as well
+ * - FUN
+ *    - caps_word thumb
+ * - NUM
+ *    - BSPC on left thumb
+ *    - Replace SEMI with DOT bc its in an awful location and dont press SEMI when typing numbers
  *
- * SPDX-License-Identifier: MIT
+ * Notes
+ * -----
+ * - Intentionally using Left Alt on the right because using software-side Colemak swap remaps this key sometimes
+ *    - For linux, I have the software fix in place but doing this just in case for other OS's.
+ *    - Not sure of any keybindings that rely on this directionality? Everything works with LA though so why not
+ * - I have a strong dislike for Miryoku chosing to place Space/Tab on left and Backspace/Return on right along with no arrow keys on the left
+ *    - I think this is motivated by gaming? I cant think of a reason
+ *    - This seriously limits single hand operation when using mouse in the browser
+ *    - I fear my muscle memory would make fixing this uncomfortable so a lot of my changes are trying to monkey patch this
+ *
+ *
+ * Spaces Available for remaps
+ * ---------------------------
+ * - Default layer: 
+ *    - Top right corner is BSPC, completely unused
+ *    - DEL thumb key: just a rare key in a valuable place
+ *    - Top row thumb keys on right
+ *    - Tab is in a valuable place but a rare-ish key (editors autoindent or I use bindings)
+ *      - I use tab for cycling selections/inputs in browser without mouse, so could be on the right hand, left is more valuable to me
+ *    - 2 leftmost keys on bottom row, layer key could have a tap behavior and F2 is now obsolete
+ * - BUTTON layer: completely unused
+ * 
+ * TODO
+ * ----
+ * - Make BSPC repeatable
+ * - caps_word is messed up since O on colemak is SEMI on Qwerty, causing it to exit
+ * - Button layer for Miryoku is really what I was doing with the LNAV layer, probably move that here
+ * - Python script for keymap parsing should instead use an AST parser
+ * - Python script for keymap parsing needs to be fixed for JSON output
+ * - SYM: consider stacking LPAR/RPAR and LBKT/RBKT on thumb rows
+ * - Tap-Dance for <C-s-[>
+ * - Nav and Num can be merged after wm bindings are confirmed -> LNAVNUM and NAVNUM
+ * - Cross Platform Compat:
+ *   - On BT output switch, WM layer should change
+ *   - Or, manually switchable default layer to support multiple WM versions
+ *
+ * Improvements
+ * ------------
+ * - TAB on DEFAULT: rare key, valuable position
+ * - UNDER: common key, would like on DEFAULT
+ * - LBRC/RBRC: common key, pinky outer column is so uncomfortable.
+ * - Bracket, Brace, Paran: Needs another redesign. Simply uncomfortable
  */
 
 #include <../boards/shields/kyria/boards/nice_nano.overlay>
@@ -13,12 +76,51 @@
 #include <dt-bindings/zmk/rgb.h>
 
 #define DEFAULT 0
-#define NUMPAD 1
-#define SYMBOLS 2
-#define NAV 3
-#define MEDIA 4
-#define RGB 5
-#define BLUETOOTH 6
+// Merge Num and Nav (Num left, Nav righ)
+#define NUMNAV 1
+// Skip Mouse layer...
+// Skip BUTTON layer...
+#define MEDIA 2
+#define SYM 4
+#define FUN 5
+#define RGB 6
+#define LNAV 7 // left hand nav
+#define WNAV 8 // window manager
+
+// Keypress Definitions ====================================
+// Window Manager ------------------------------------------
+// switching groups/workspaces
+#define wm_next LG(LA(RIGHT)) // window manager next group/workspace
+#define wm_prev LG(LA(LEFT))  // window manager prev group/workspace
+#define wm1 LG(N1)
+#define wm2 LG(N2)
+#define wm3 LG(N3)
+#define wm4 LG(N4)
+#define wm5 LG(N5)
+#define wm6 LG(N6)
+#define wm7 LG(N7)
+#define wm8 LG(N8)
+#define wm9 LG(N9)
+#define wm0 LG(N0)
+#define wm0 LG(N0)
+
+// window focus
+#define wm_l LG(LEFT)         // wm focus window left
+#define wm_d LG(DOWN)         // wm focus window down
+#define wm_u LG(UP)           // wm focus window up
+#define wm_r LG(RIGHT)        // wm focus window right
+
+// window sizing
+#define wm_sz_l LG(LC(LEFT))  // wm window resize left
+#define wm_sz_d LG(LC(DOWN))  // wm window resize down
+#define wm_sz_u LG(LC(UP))    // wm window resize up
+#define wm_sz_r LG(LC(RIGHT)) // wm window resize right
+
+// window moving
+#define wm_mv_l LG(LS(LEFT))  // wm window move window left
+#define wm_mv_d LG(LS(DOWN))  // wm window move window down
+#define wm_mv_u LG(LS(UP))    // wm window move window up
+#define wm_mv_r LG(LS(RIGHT)) // wm window move window right
 
 
 &mt {
@@ -30,68 +132,6 @@
 };
 
 / {
-    macros {
-		tmux_prefix: tmux_prefix {
-            label = "ZM_tmux_prefix";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-			wait-ms = <40>;
-			tap-ms = <40>; // wait a couple ms bw key presses
-            bindings = <&macro_tap &kp LC(S)>;
-        };
-		
-        wm_numpad: wm_numpad {
-            label = "ZM_wm_numpad";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-			wait-ms = <40>;
-			tap-ms = <40>; // wait a couple ms bw key presses
-            bindings = <&macro_tap &kp LG(ENTER) &mo NUMPAD>;
-        };
-		vim_cmd_mode: vim_cmd_mode {
-            label = "ZM_vim_cmd_mode";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-			wait-ms = <40>;
-			tap-ms = <40>; // wait a couple ms bw key presses
-            bindings = <&macro_tap &kp ESC &kp COLON>;
-        };
-    };
-
-	behaviors {
-		mtb: mod_tap_permissive {
-			compatible = "zmk,behavior-hold-tap";
-			label = "MOD_TAP_PERMISSIVE";
-			#binding-cells = <2>;
-			flavor = "balanced";
-			tapping-term-ms = <200>;
-			quick-tap-ms = <0>;
-			bindings = <&kp>, <&kp>;
-		};
-		lto: layer_tap_other_hold {
-			compatible = "zmk,behavior-hold-tap";
-			label = "LAYER_TAP_OTHER_HOLD";
-			#binding-cells = <2>;
-			flavor = "hold-preferred";
-			tapping-term-ms = <200>;
-			quick-tap-ms = <100>; // quick tap+hold triggers tap repeat
-			bindings = <&mo>, <&kp>;
-		};
-		td_sym_vim: tap_dance_0 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_0";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&lto SYMBOLS ESC>, <&vim_cmd_mode>;
-        };
-		td_pp_tmux: tap_dance_1 {
-            compatible = "zmk,behavior-tap-dance";
-            label = "TAP_DANCE_1";
-            #binding-cells = <0>;
-            tapping-term-ms = <200>;
-            bindings = <&kp C_PP>, <&tmux_prefix>;
-        };
-	};
 
 	keymap { 
 		compatible = "zmk,keymap";
@@ -99,77 +139,93 @@
 		default_layer {
 			label = "Default";
 			bindings = <
-    &kp  F6        &kp Q        &kp W      &lt RGB E   &lt MEDIA R   &kp T                                                                      &kp Y       &lt BLUETOOTH U &kp I          &kp O        &kp P           &caps_word
-    &mt  ESC LCTRL &mt LCTRL A  &kp S      &kp D       &mt LSHFT F   &kp G                                                                      &kp H       &mt RSHFT J     &kp K          &kp L        &mt RCTRL SEMI  &mt RSHFT SQT
-    &mtb LGUI TAB  &kp Z        &mt LALT X &mt LALT C  &kp V         &kp B    &kp F12        &kp F11            &kp F10          &kp F1         &mt RSHFT N &kp M           &mt RALT COMMA &mt RGUI DOT &mt RSHFT FSLH  &mt RCTRL BSLH
-                                          &kp PAGE_UP &kp PAGE_DOWN &kp BSPC &lto NAV SPACE &lto NUMPAD RET    &lto NUMPAD BSPC &lto NAV SPACE &kp ESC     &td_pp_tmux     &kp C_NEXT
+    &lt RGB LBKT    &kp Q         &kp W      &kp F         &kp P           &kp G                                                                                  &kp J       &kp L       &kp U         &kp Y       &kp SEMI        &kp BSPC
+    &kp LPAR        &mt LGUI A    &mt LALT R &mt LCTRL S   &mt LSHFT T     &kp D                                                                                  &kp H       &mt RSHFT N &mt RCTRL E   &mt LALT I  &mt RGUI O      &mt RSHFT SQT
+    &mt LCTRL LBRC  &lt MEDIA Z   &kp X      &kp C         &kp V           &kp B        &lt MEDIA MINUS &kp UNDER                 &kp wm_prev   &kp wm_next       &kp K       &kp M       &kp COMMA     &kp DOT     &kp FSLH        &mt RCTRL BSLH
+                                             &kp C_PREV    &mt LSHFT MINUS &lt WNAV ESC &lt NUMNAV SPACE   &lt LNAV TAB           &lt SYM RET   &lt NUMNAV BSPC   &lt FUN DEL &kp C_PP    &kp C_NEXT
 			>;
 		};
 
-		numpad_layer {
-			label = "Numpad";
+		num_nav_layer {
+			label = "NumNav";
 			bindings = <
-	&trans &trans &trans &trans         &kp LBRC         &kp RBRC                               &kp F1            &kp N7 &kp N8 &kp N9 &kp DEL   &trans
-	&trans &trans &trans &kp RALT       &kp LBKT         &kp RBKT                               &kp LC(PAGE_UP)   &kp N4 &kp N5 &kp N6 &kp BSLH  &kp KP_MULTIPLY
-	&trans &trans &trans &trans         &kp LPAR         &kp RPAR &trans &trans   &trans &trans &kp LC(PAGE_DOWN) &kp N1 &kp N2 &kp N3 &kp PIPE  &kp EQUAL
-	                     &kp LG(LC(UP)) &kp LG(LC(DOWN)) &trans   &trans &trans   &trans &trans &kp KP_DOT        &kp N0 &trans
+    &kp RBKT       &kp LBKT       &kp N7     &kp N8         &kp N9      &kp RBKT                                                                 &kp K_REDO     &kp K_PASTE &kp K_COPY    &kp K_CUT   &kp K_UNDO   &kp INSERT
+    &kp RPAR       &kp DOT        &kp N4     &kp N5         &kp N6      &kp EQUAL                                                                &caps_word     &kp LEFT    &kp DOWN      &kp UP      &kp RIGHT    &kp CAPS    
+    &kp RBRC       &kp GRAVE      &kp N1     &kp N2         &kp N3      &kp BSLH      &trans        &trans              &trans      &trans       &kp INSERT     &kp HOME    &kp PAGE_DOWN &kp PAGE_UP &kp END      &trans
+                                             &trans         &kp DOT     &kp N0        &kp MINUS     &kp BSPC            &trans      &kp BSPC     &kp DEL        &trans      &trans
 			>;
-		};
+    };
 
-		symbol_layer { 
-			label = "Symbol";
-			bindings = <
-	&kp GRAVE &kp F1   &kp F2  &kp F3   &kp F4     &kp F5                                  &kp F6    &kp F7   &kp F8   &kp F9      &kp F10   &kp DEL
-	&kp TILDE &kp EXCL &kp AT  &kp HASH &kp DOLLAR &kp PRCNT                               &kp CARET &kp AMPS &kp STAR &kp MINUS   &kp EQUAL &kp BSLH
-	&trans    &kp F11  &kp F12 &trans   &trans     &trans    &trans &trans   &trans &trans &trans    &trans   &trans   &kp UNDER   &kp PLUS  &kp PIPE
-	                           &trans   &trans     &trans    &trans &trans   &trans &trans &trans    &trans   &trans
-			>;
-
-		};
-
-		nav_layer {
-			label = "Nav";
-			bindings = <
-	&kp LALT  &trans     &trans     &trans    &trans     &trans                                    &kp K_CUT &kp K_COPY &kp K_PASTE  &kp K_UNDO  &kp K_REDO &kp RALT 
-	&kp LGUI  &kp LG(1)  &kp LG(2)  &kp LG(3) &kp LG(4)  &kp LG(5)                                 &kp LEFT  &kp DOWN   &kp UP       &kp RIGHT   &kp RCTRL  &kp RGUI 
-	&kp LSHFT &kp LG(6)  &kp LG(7)  &kp LG(8) &kp LG(9)  &kp LG(0) &trans &trans   &trans  &trans  &trans    &kp HOME   &kp END      &trans      &trans     &kp RSHFT   
-	                                          &trans     &trans    &trans &trans   &trans  &trans  &trans    &trans     &trans       &trans 
-			>;
-
-		};
-
+    // SKIP MOUSE LAYER...
+    // SKIP BUTTON LAYER...
 		media_layer {
 			label = "Media";
 			bindings = <
-	&trans &trans &trans &trans &trans &trans                                &trans &trans &trans &trans &trans &trans
-	&trans &trans &trans &trans &trans &trans                                &kp C_PREV &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT &trans &trans
-	&trans &trans &trans &trans &trans &trans &trans &trans    &trans &trans &trans     &trans &trans &trans &trans &trans
-	                     &trans &trans &trans &trans &trans    &trans &kp C_PP &kp C_MUTE &trans &trans
+    &trans          &kp K_UNDO     &kp K_CUT  &kp K_COPY    &kp K_PASTE &kp K_REDO                                                              &bt BT_PRV   &out OUT_USB &out OUT_BLE &bt BT_NXT   &bt BT_CLR    &trans
+    &trans          &kp LGUI       &kp LALT   &kp LCTRL     &kp LSHFT   &trans                                                                  &trans       &kp C_PREV   &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT    &trans
+    &trans          &trans         &trans     &trans        &trans      &trans        &trans        &trans             &trans      &trans       &out OUT_TOG &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3  &bt BT_SEL 4
+                                              &trans        &trans      &trans        &trans        &trans             &trans      &trans       &trans       &kp C_PP     &kp C_MUTE
 			>;
+		};
 
+//		numpad_layer {
+//			label = "Num";
+//			bindings = <
+//    &kp RBKT       &kp LBKT       &kp N7     &kp N8         &kp N9      &kp RBKT                                                                &trans      &trans        &trans        &trans      &trans         &trans
+//    &kp RPAR       &kp DOT        &kp N4     &kp N5         &kp N6      &kp EQUAL                                                               &trans      &kp RSHFT     &kp RCTRL     &kp RALT    &kp RGUI       &trans
+//    &kp RBRC       &kp GRAVE      &kp N1     &kp N2         &kp N3      &kp BSLH      &trans        &trans            &trans       &trans       &trans      &trans        &trans        &trans      &trans         &trans
+//                                             &trans         &kp DOT     &kp N0        &kp MINUS     &kp BSPC          &trans       &trans       &trans      &trans        &trans
+//			>;
+//		};
+
+		symbol_layer { 
+			label = "Sym";
+			bindings = <
+    &trans         &kp LBRC   &kp AMPS       &kp STAR       &kp LPAR    &kp RBRC                                                                &trans      &trans        &trans        &trans      &trans         &trans
+    &trans         &kp COLON  &kp DOLLAR     &kp PRCNT      &kp CARET   &kp PLUS                                                                &trans      &kp RSHFT     &kp RCTRL     &kp RALT    &kp RGUI       &trans
+    &trans         &kp TILDE  &kp EXCL       &kp AT         &kp HASH    &kp PIPE      &trans        &trans            &trans       &trans       &trans      &trans        &trans        &trans      &trans         &trans
+                                             &kp LBKT       &kp RBKT    &kp LPAR      &kp RPAR      &kp UNDER         &trans       &trans       &trans      &trans        &trans
+			>;
+		};
+
+		fun_layer {
+			label = "Fun";
+			bindings = <
+    &trans         &kp F12      &kp F7     &kp F8         &kp F9      &kp PSCRN                                                                  &trans      &trans        &trans        &trans      &trans         &trans
+    &trans         &kp F11      &kp F4     &kp F5         &kp F6      &kp SLCK                                                                   &trans      &kp RSHFT     &kp RCTRL     &kp RALT    &kp RGUI       &trans
+    &trans         &kp F10      &kp F1     &kp F2         &kp F3      &kp PAUSE_BREAK  &trans        &trans            &trans       &trans       &trans      &trans        &trans        &trans      &trans         &trans
+                                           &trans         &trans      &kp SPACE        &kp TAB       &caps_word        &trans       &trans       &trans      &trans        &trans
+			>;
 		};
 
 		rgb_layer {
 			label = "RGB";
 			bindings = <
-	&trans &trans &trans &ext_power EP_TOG &trans &trans                                &trans          &trans          &trans          &trans          &trans          &trans
-	&trans &trans &trans &trans            &trans &trans                                &rgb_ug RGB_TOG &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_SPI &rgb_ug RGB_EFF
-	&trans &trans &trans &trans            &trans &trans &trans &trans    &trans &trans &trans          &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &rgb_ug RGB_SPD &rgb_ug RGB_EFR
-	                     &trans            &trans &trans &trans &trans    &trans &trans &trans          &trans          &trans
+    &trans        &trans       &trans      &trans         &trans      &sys_reset                                                                                         &sys_reset      &trans          &trans          &trans          &ext_power EP_OFF &ext_power EP_ON
+    &trans        &trans       &trans      &trans         &trans      &trans                                                                                             &rgb_ug RGB_TOG &rgb_ug RGB_HUI &rgb_ug RGB_SAI &rgb_ug RGB_BRI &rgb_ug RGB_SPI &rgb_ug RGB_EFF
+    &trans        &trans       &trans      &trans         &trans      &trans      &trans            &trans                           &trans            &trans            &trans          &rgb_ug RGB_HUD &rgb_ug RGB_SAD &rgb_ug RGB_BRD &rgb_ug RGB_SPD &rgb_ug RGB_EFR
+                                           &trans         &trans      &trans      &ext_power EP_OFF &ext_power EP_ON                 &ext_power EP_ON  &ext_power EP_OFF &trans          &trans          &trans
 			>;
-
 		};
 
-		bluetooth_layer {
-			label = "BT";
+		lnav_layer {
+			label = "L-Nav";
 			bindings = <
-	&bt BT_NXT &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4                    &trans &trans &trans &trans &trans &trans
-	&bt BT_PRV &trans &trans &trans &trans &trans                                                  &trans &trans &trans &trans &trans &trans
-	&trans     &trans &trans &out OUT_BLE &out OUT_USB &out OUT_TOG &trans &trans    &trans &trans &trans &trans &trans &trans &trans &trans
-	                         &bt BT_CLR &trans &trans &trans &trans                  &trans &trans &trans &trans &trans
+    &trans        &trans       &trans      &kp BSPC       &kp RET     &trans                                                                     &trans          &kp N7          &kp N8         &kp N9          &trans          &trans
+    &trans        &kp LEFT     &kp DOWN    &kp UP         &kp RIGHT   &kp PG_UP                                                                  &trans          &mt RSHFT N4    &mt RCTRL N5   &mt LALT N6     &kp RGUI        &trans
+    &kp K_REDO    &kp K_UNDO   &kp K_CUT   &kp K_COPY     &kp K_PASTE &kp PG_DN        &trans        &trans             &trans      &trans       &trans          &kp N1          &kp N2         &kp N3          &trans          &trans
+                                           &trans         &trans      &trans           &trans        &trans             &trans      &trans       &trans          &trans          &trans
 			>;
-
 		};
 
+		wm_layer {
+			label = "WM";
+			bindings = <
+    &trans        &kp wm_next  &kp wm7     &kp wm8        &kp wm9     &trans                                                                     &trans          &kp wm_sz_l     &kp wm_sz_d     &kp wm_sz_u     &kp wm_sz_r     &trans
+    &trans        &kp LSHFT    &kp wm4     &kp wm5        &kp wm6     &trans                                                                     &trans          &kp wm_l        &kp wm_d        &kp wm_u        &kp wm_r        &trans
+    &trans        &kp wm_prev  &kp wm1     &kp wm2 	      &kp wm3     &trans           &trans        &trans             &trans      &trans       &trans          &kp wm_mv_l     &kp wm_mv_d     &kp wm_mv_u     &kp wm_mv_r     &trans
+                                           &trans         &trans      &trans           &trans        &trans             &kp wm_prev &kp wm_next  &mt LSHFT DEL   &trans          &trans
+			>;
+		};
 	};
 };
