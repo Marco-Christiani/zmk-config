@@ -30,8 +30,15 @@ def keymap_to_dict():
     with open("/home/marco/Github/zmk-config/config/kyria.keymap", "r") as f:
         data = f.readlines()
 
-    layer_names = [l.split("#define ")[1].strip().split()[0]
-                   for l in data if "#define" in l]
+    # layer_names = [l.split("#define ")[1].strip().split()[0]
+    #                for l in data if "#define" in l]
+    layer_names = []
+    for l in data:
+        if "#define" in l:
+            lname = l.split("#define ")[1].strip().split()[0]
+            # Layer names must be all uppercase
+            if all(c >= 'A' and c <= 'Z' for c in lname):
+                layer_names.append(lname)
 
     idx = [i for i, s in enumerate(data) if "keymap {" in s][0]
 
