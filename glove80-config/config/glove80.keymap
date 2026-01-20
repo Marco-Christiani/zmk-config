@@ -1,117 +1,89 @@
 #include <behaviors.dtsi>
-#include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/rgb.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/rgb.h>
 
+/* Layer indices */
+#define DEFAULT 0
+#define LOWER   1
+#define MAGIC   2
+#define NUMNAV  3
+#define SYM     4
+#define WM      5
 
 / {
-    /* Glove80 system behavior & macros */
     behaviors {
-        // For the "layer" key, it'd nice to be able to use it as either a shift or a toggle.
-        // Configure it as a tap dance, so the first tap (or hold) is a &mo and the second tap is a &to
-        lower: tap_dance_0 {
+        /* Lower layer: tap = momentary, double-tap = toggle */
+        lower_td: tap_dance_0 {
             compatible = "zmk,behavior-tap-dance";
-            label = "LAYER_TAP_DANCE";
+            // label = "LOWER_TAP_DANCE"; // deprecated
             #binding-cells = <0>;
             tapping-term-ms = <200>;
-            bindings = <&mo 1>, <&to 1>;
-        };
-    };
-};
-
-/ {
-    macros {
-        rgb_ug_status_macro: rgb_ug_status_macro_0 {
-            label = "RGB_UG_STATUS";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&rgb_ug RGB_STATUS>;
+            bindings = <&mo LOWER>, <&to LOWER>;
         };
 
-        bt_0: bt_profile_macro_0 {
-            label = "BT_0";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&out OUT_BLE>,
-                  <&bt BT_SEL 0>;
-        };
-
-        bt_1: bt_profile_macro_1 {
-            label = "BT_1";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&out OUT_BLE>,
-                  <&bt BT_SEL 1>;
-        };
-
-        bt_2: bt_profile_macro_2 {
-            label = "BT_2";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&out OUT_BLE>,
-                  <&bt BT_SEL 2>;
-        };
-
-        bt_3: bt_profile_macro_3 {
-            label = "BT_3";
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            bindings
-                = <&out OUT_BLE>,
-                  <&bt BT_SEL 3>;
-        };
-    };
-};
-
-/ {
-    magic: magic_hold_tap {
-        compatible = "zmk,behavior-hold-tap";
-        label = "MAGIC_HOLD_TAP";
-        #binding-cells = <2>;
-        flavor = "tap-preferred";
-        tapping-term-ms = <200>;
-        bindings = <&mo>, <&rgb_ug_status_macro>;
-    };
-};
-
-    /* Custom Defined Behaviors */
-/ {
-    hm: homerow_mods {
+        /* Magic layer hold-tap */
+        magic: magic_hold_tap {
             compatible = "zmk,behavior-hold-tap";
-            label = "HOMEROW_MODS";
+            // label = "MAGIC_HOLD_TAP"; // deprecated
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo &rgb_ug_status_macro>;
+        };
+
+        /* Home-row mods */
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            // label = "HOMEROW_MODS"; // deprecated
             #binding-cells = <2>;
             tapping-term-ms = <110>;
             quick-tap-ms = <0>;
             flavor = "tap-preferred";
-            bindings = <&kp>, <&kp>;
+            bindings = <&kp &kp>;
         };
-};
+    };
 
-&mt {
-	flavor = "tap-preferred";
-};
+    macros {
+        rgb_ug_status_macro: rgb_ug_status_macro_0 {
+            // label = "RGB_UG_STATUS"; // deprecated
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&rgb_ug RGB_STATUS>;
+        };
 
-&lt {
-	flavor = "tap-preferred";
-};
+        bt_0: bt_profile_macro_0 {
+            // label = "BT_0"; // deprecated
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&out OUT_BLE &bt BT_SEL 0>;
+        };
 
-#define DEFAULT 0
-#define LOWER 1
-#define MAGIC 2
-#define NUMNAV 3
-#define SYM 4
-#define WM 5
+        bt_1: bt_profile_macro_1 {
+            // label = "BT_1"; // deprecated
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&out OUT_BLE &bt BT_SEL 1>;
+        };
 
-/ {
+        bt_2: bt_profile_macro_2 {
+            // label = "BT_2"; // deprecated
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&out OUT_BLE &bt BT_SEL 2>;
+        };
+
+        bt_3: bt_profile_macro_3 {
+            // label = "BT_3"; // deprecated
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&out OUT_BLE &bt BT_SEL 3>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
-
 
         layer_Base {
             bindings = <
@@ -120,7 +92,7 @@
     &kp TAB     &kp Q       &kp W       &kp F        &kp P       &kp G                                                                                                     &kp J    &kp L       &kp U       &kp Y    &kp SEMI   &kp BSLH
     &kp ESC     &mt LGUI A  &mt LALT R  &mt LCTRL S  &mt LSHFT T &kp D                                                                                                     &kp H    &mt RSHFT N &mt RCTRL E &mt RALT I    &mt RGUI O &kp SQT
     &kp GRAVE   &kp Z       &kp X       &kp C        &kp V       &kp B      &lt NUMNAV LSHFT &mt LCTRL MINUS &lt LOWER UNDER &lt SYM SQT     &mt RCTRL UNDER &lt SYM RSHFT &kp K    &kp M       &kp COMMA   &kp DOT    &kp FSLH   &kp PG_UP
-    &magic 2 0  &kp HOME    &kp END     &kp LEFT     &kp RIGHT   &lt WM ESC &lt NUMNAV SPACE &kp TAB         &lt SYM RET     &lt NUMNAV BSPC &lt SYM DEL     &kp UP       &kp DOWN    &kp LBKT    &kp RBKT    &kp PG_DN
+    &magic MAGIC 0  &kp HOME    &kp END     &kp LEFT     &kp RIGHT   &lt WM ESC &lt NUMNAV SPACE &kp TAB         &lt SYM RET     &lt NUMNAV BSPC &lt SYM DEL     &kp UP       &kp DOWN    &kp LBKT    &kp RBKT    &kp PG_DN
             >;
         };
 
@@ -129,20 +101,20 @@
        &kp C_BRI_DN   &kp C_BRI_UP &kp C_PREV     &kp C_NEXT &kp C_PP                                                                                     &kp C_MUTE    &kp C_VOL_DN  &kp C_VOL_UP    &none             &kp PAUSE_BREAK
        &trans         &none        &none          &none      &none           &kp HOME                                                        &kp LPAR     &kp KP_NUM    &kp KP_EQUAL  &kp KP_SLASH    &kp KP_MULTIPLY   &kp PRINTSCREEN
        &trans         &none        &none          &none      &none           &kp END                                                         &kp RPAR     &kp N7        &kp N8        &kp N9          &kp KP_MINUS      &kp SCROLLLOCK
-       &trans         &kp LEFT     &kp DOWN_ARROW &kp UP     &kp RIGHT_ARROW &kp PG_UP                                                       &kp PERCENT  &kp N4        &kp N5        &kp N6          &kp PLUS          &none
+       &trans         &kp LEFT     &kp DOWN       &kp UP     &kp RIGHT       &kp PG_UP                                                       &kp PERCENT  &kp N4        &kp N5        &kp N6          &kp PLUS          &none
        &trans         &kp K_APP    &none          &kp F11    &kp F12         &kp PG_DN  &trans  &trans  &to DEFAULT  &trans  &trans  &trans  &kp COMMA    &kp N1        &kp N2        &kp N3          &kp ENTER         &trans
-       &magic 2 0     &kp CAPS     &kp INS        &kp F11    &kp F12                    &trans  &trans  &trans       &trans  &trans  &trans               &kp N0        &kp N0        &kp DOT         &kp ENTER         &trans
+       &magic MAGIC 0     &kp CAPS     &kp INS        &kp F11    &kp F12                    &trans  &trans  &trans   &trans  &trans  &trans               &kp N0        &kp N0        &kp DOT         &kp ENTER         &trans
             >;
         };
 
         layer_Magic {
             bindings = <
-  &bt BT_CLR            &none            &none            &none            &none                                                                                  &none   &none   &none   &none  &bt BT_CLR_ALL
-       &none            &none            &none            &none            &none            &none                                                         &none   &none   &none   &none   &none           &none
-       &none  &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                                         &none   &none   &none   &none   &none           &none
- &bootloader  &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                                         &none   &none   &none   &none   &none     &bootloader
-      &reset            &none            &none            &none            &none            &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none   &none          &reset
-       &none            &none            &none            &none            &none                    &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none   &none           &none
+       &bt BT_CLR       &none            &none            &none            &none                                                                                  &none   &none   &none   &none  &bt BT_CLR_ALL
+       &none            &none            &none            &none            &none            &none                                                         &none   &none   &none   &none   &none  &none
+       &none            &rgb_ug RGB_SPI  &rgb_ug RGB_SAI  &rgb_ug RGB_HUI  &rgb_ug RGB_BRI  &rgb_ug RGB_TOG                                               &none   &none   &none   &none   &none  &none
+       &bootloader      &rgb_ug RGB_SPD  &rgb_ug RGB_SAD  &rgb_ug RGB_HUD  &rgb_ug RGB_BRD  &rgb_ug RGB_EFF                                               &none   &none   &none   &none   &none  &bootloader
+       &sys_reset       &none            &none            &none            &none            &none   &bt_2   &bt_3         &none   &none   &none   &none   &none   &none   &none   &none   &none  &sys_reset
+       &none            &none            &none            &none            &none                    &bt_0   &bt_1  &out OUT_USB   &none   &none   &none           &none   &none   &none   &none  &none
             >;
         };
 
